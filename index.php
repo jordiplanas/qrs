@@ -5,6 +5,7 @@
   <title>qrs</title>
   <meta name="description" content="qrs">
   <meta name="author" content="Jordi">
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 </head>
 <body>
 <?php
@@ -39,6 +40,15 @@ if (isset($_REQUEST['name']) && isset($_REQUEST['privacy'])){
 }else{
     echo "<div><h3>Please check all the fields and accept our policies</h3></div>";
 }
+// get params from qr url 
+if (isset($_GET['id'])) {
+    echo $_GET['id'];
+    setcookie('id', $_GET['id']);
+
+
+} else {
+    // Fallback behaviour goes here
+}
 ?>
   <div class="form">
     <h1>Registration</h1>
@@ -53,8 +63,11 @@ if (isset($_REQUEST['name']) && isset($_REQUEST['privacy'])){
     </form>
 </div>
  <script>
- var x = document.cookie;
- console.log(x);
+
+
+console.log(document.cookie);
+</script>
+
  </script>
 </body>
 </html>
