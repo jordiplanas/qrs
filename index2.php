@@ -12,7 +12,7 @@
 <?php
 require('config.php');
 //check user exist
-if(count($_COOKIE) > 0) {
+
     //cookies are enabled
     if(!isset($_COOKIE['userId'])) { 
         //user has no ID go to Register Form
@@ -20,7 +20,9 @@ if(count($_COOKIE) > 0) {
         //rember the qr url
         if (isset($_GET['id'])) {
             setcookie('prevUrl', $_GET['id']);
-            header("Location: http://localhost/qrs/form.html"); 
+           // header("Location: http://vimod.net/qrs/form.html"); 
+            echo "your redirected";
+            echo "<script>window.location='form.html';</script>";
             exit();
         }
       
@@ -68,13 +70,10 @@ if(count($_COOKIE) > 0) {
             // Fallback behaviour goes here
         }   
     }
-  } else {
-   //Cookies are disabled
-  }
+  
+
 ?>
 <div id="menu" style="font-size:20px"></div>
-
-
 
 <script>
 
