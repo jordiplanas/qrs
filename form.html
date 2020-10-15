@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>FORM</title>
+    <meta name="description" content="FORM">
+    <meta name="author" content="JORDI">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <p id="message"></p>
+    <div class="form">
+        <h1>Registration</h1>
+        <form name="registration" id="my-form" action="" method="post">
+            <input type="text" name="name" placeholder="Username" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <div>
+                <input type="radio" id="privacy" name="privacy" value="huey">
+                <label for="huey">Accept privacy policy</label>
+            </div>
+            <input type="submit" name="submit" value="Register" />
+        </form>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("#my-form").submit(function(e) {
+                console.log("submt");
+                e.preventDefault();
+                $.ajax({
+                    url: "post.php",
+                    method: "post",
+                    data: $("form").serialize(),
+                    dataType: "text",
+                    success: function(strMessage) {
+                        $("#message").text(strMessage);
+                        $("#my-form")[0].reset();
+                        setTimeout(function() {
+                            //get the cookie to know the prev url
+                            var id = getCookieValue("prevUrl");
+                            window.location.href = 'index2.php?id=' + id;
+                        }, 3000);
+                    }
+                });
+            });
+
+            function getCookieValue(a) {
+                var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
+                return b ? b.pop() : '';
+            }
+        });
+    </script>
+</body>
+
+</html>
