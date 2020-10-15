@@ -17,6 +17,13 @@ if(count($_COOKIE) > 0) {
     if(!isset($_COOKIE['userId'])) { 
         //user has no ID go to Register Form
         echo "no cookie";
+        //rember the qr url
+        if (isset($_GET['id'])) {
+            setcookie('prevUrl', $_GET['id']);
+            header("Location: http://localhost/qrs/form.html"); 
+            exit();
+        }
+      
        
     }else{
         
@@ -66,49 +73,20 @@ if(count($_COOKIE) > 0) {
   }
 ?>
 <div id="menu" style="font-size:20px"></div>
- <p id="message"></p> 
-  <div class="form">
-    <h1>Registration</h1>
-    <form name="registration" id="my-form" action="" method="post">
-    <input type="text" name="name" placeholder="Username" required />
-    <input type="email" name="email" placeholder="Email" required />
-    <div>
-        <input type="radio" id="privacy" name="privacy" value="huey">
-        <label for="huey">Accept privacy policy</label>
-    </div>
-    <input type="submit" name="submit" value="Register"/>
-    </form>
-</div>
+
 
 
 <script>
-$(document).ready(function() {
-    $("#my-form").submit(function(e) {
-        console.log("sublit")
-        e.preventDefault();
-        $.ajax( {
-            url: "post.php",
-            method: "post",
-            data: $("form").serialize(),
-            dataType: "text",
-            success: function(strMessage) {
-                $("#message").text(strMessage);
-                $("#my-form")[0].reset();
-            }
-        });
-    });
-});
-//Get Menu data, points and username from cookies
-//console.log(getCookieValue("points"));
-var userPoints = getCookieValue("points");
-var userName = getCookieValue("name");
-document.getElementById("menu").innerHTML = "Hi: " +userName+ "! Your points:" +userPoints;
-function getCookieValue(a) {
-    var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
-    return b ? b.pop() : '';
-}
-      
-</script>
+
+    //Get data for menu, points and username from cookies
+    var userPoints = getCookieValue("points");
+        var userName = getCookieValue("name");
+        document.getElementById("menu").innerHTML = "Hi: " + userName + "! Your points:" + userPoints;
+
+        function getCookieValue(a) {
+            var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
+            return b ? b.pop() : '';
+        }
 
  </script>
 </body>
