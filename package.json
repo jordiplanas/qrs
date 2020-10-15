@@ -1,0 +1,19 @@
+{
+  "name": "qrproject",
+  "version": "1.0.0",
+  "description": "qr code project",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "parse-data": "node parser/data-parser.js"
+  },
+  "author": "aurel",
+  "license": "ISC",
+  "dependencies": {
+    "csvtojson": "^2.0.10",
+    "fs-extra": "^9.0.1"
+  }
+}
