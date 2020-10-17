@@ -12,13 +12,15 @@
 </head>
 
 <body>
+    <div class="notification">
+        <p id="message"></p>
+    </div>
     <img class="hero-img" src="https://www.fillmurray.com/g/500/500">
-    <p id="message"></p>
     <div class="form">
         <h1>Registration</h1>
         <form name="registration" id="my-form" action="" method="post">
-            <input type="text" name="name" placeholder="Username" required />
-            <!-- <input type="email" name="email" placeholder="Email" required /> -->
+            <input class="input" type="text" name="name" placeholder="Username" required />
+            <input class="input" type="email" name="email" placeholder="Email" required />
             <div class="radio-btn">
                 <input type="radio" id="privacy" name="privacy" value="huey">
                 <label for="huey">Accept privacy policy</label>
@@ -37,6 +39,7 @@
                     data: $("form").serialize(),
                     dataType: "text",
                     success: function(strMessage) {
+                        $(".notification").css('display','block');
                         $("#message").text(strMessage);
                         $("#my-form")[0].reset();
                         setTimeout(function() {
@@ -66,12 +69,17 @@
         font-size: 14pt;
         font-family: 'Courier New', Courier, monospace;
     }
-    header{
-        padding: 30px;
-        background-color: #080808;
+    .notification{
+        position: absolute;
+        display: none;
+        top: 0;
+        background-color: black;
+        color: white;
+        width: calc(100% - 40px);
+        padding: 20px;
     }
-    .logo{
-        border-radius: 50%;
+    #message{
+        margin: 0;
     }
     .hero-img{
         width: 100vw;
@@ -87,15 +95,17 @@
         color: lightgrey;
         margin:20px 0;
     }
-    input[type=text]{
+    .input{
         width: calc(100% - 50px);
         padding:20px 25px;
         border: none;
         background-color: lightgrey;
         border-radius: 10px;
+        margin: 10px 0;
+        display: block;
     }
 
-    input[type=text]::placeholder{
+    .input::placeholder{
         color: black;
         font-size: 16pt;
     }

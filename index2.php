@@ -75,9 +75,9 @@ require('config.php');
   
 
 ?>
-
 <div id="menu" style="font-size:20px"></div>
 
+</body>
 <script>
 
     //Get data for menu, points and username from cookies
@@ -90,7 +90,15 @@ require('config.php');
             return b ? b.pop() : '';
         }
 
- </script>
-</body>
+</script>
+<style>
+    header{
+        padding: 30px;
+        background-color: #080808;
+    }
+    .logo{
+        border-radius: 50%;
+    }
+</style>
 </html>
 
