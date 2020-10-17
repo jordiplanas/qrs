@@ -20,7 +20,7 @@ if(count($_COOKIE) > 0) {
         //rember the qr url
         if (isset($_GET['id'])) {
             setcookie('prevUrl', $_GET['id']);
-            header("Location: http://localhost/qrs/form.html"); 
+            echo "<script> window.location.href='http://localhost:8888/form.html';</script>";
             exit();
         }
       

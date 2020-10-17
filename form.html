@@ -11,12 +11,16 @@
 </head>
 
 <body>
+    <!-- <header>
+        <img class="logo" src="https://www.fillmurray.com/g/100/100">
+    </header> -->
+    <img class="hero-img" src="https://www.fillmurray.com/g/500/500">
     <p id="message"></p>
     <div class="form">
         <h1>Registration</h1>
         <form name="registration" id="my-form" action="" method="post">
             <input type="text" name="name" placeholder="Username" required />
-            <input type="email" name="email" placeholder="Email" required />
+            <!-- <input type="email" name="email" placeholder="Email" required /> -->
             <div>
                 <input type="radio" id="privacy" name="privacy" value="huey">
                 <label for="huey">Accept privacy policy</label>
@@ -40,7 +44,7 @@
                         setTimeout(function() {
                             //get the cookie to know the prev url
                             var id = getCookieValue("prevUrl");
-                            window.location.href = 'index2.php?id=' + id;
+                            window.location.href = 'http://localhost:8888/index2.php?id=' + id;
                         }, 3000);
                     }
                 });
@@ -53,5 +57,34 @@
         });
     </script>
 </body>
+
+<style>
+    body{
+        margin: 0;
+        font-size: 30pt;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    header{
+        padding: 30px;
+        background-color: #080808;
+    }
+    .logo{
+        border-radius: 50%;
+    }
+    .hero-img{
+        width: 100vw;
+    }
+    .form{
+        padding: 50px;
+    }
+    h1{
+        font-size: 30pt;
+        color: grey;
+    }
+    input[type=text]{
+        width: 100%;
+        padding:50px;
+    }
+</style>
 
 </html>

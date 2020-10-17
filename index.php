@@ -67,8 +67,6 @@ if (isset($_GET['id'])) {
 
 console.log(document.cookie);
 </script>
-
- </script>
 </body>
 </html>
 
