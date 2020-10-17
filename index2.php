@@ -24,14 +24,11 @@ require('config.php');
             setcookie('prevUrl', $_GET['id']);
             // echo "<script> window.location.href='http://localhost:8888/form.html';</script>";
            // header("Location: http://vimod.net/qrs/form.html"); 
-            echo "your redirected";
+            echo "you're redirected";
             echo "<script>window.location='form.html';</script>";
             exit();
         }
-      
-       
     }else{
-        
         //user has an Id, has been on the site 
         $userId = $_COOKIE['userId'];
         // echo "welcome back id: " . $userId;
@@ -41,11 +38,18 @@ require('config.php');
             //check visited de Qr parameter id
             $sql_id= "SELECT `$qr` FROM `codes` WHERE `id`='$userId'";
             $result= mysqli_query($conn, $sql_id);
+            if(!$result){
+                //if the QR doesn't exist --> send to 404 error page
+                // echo "QR doesn't exist";
+                echo "<script>window.location='404.html';</script>";
+            }
             while ($row = $result->fetch_assoc()) {
                 $qrResult= $row[$qr];
             }
             if($qrResult>0){
                 //QR code already scanned --> send to already scanned error page
+                echo "already scanned";
+                // echo "<script>window.location='invalid.html';</script>";
             }else{
                 //update qrs database to visited qr
                 $updateQR = mysqli_query($conn, "UPDATE `codes` SET `$qr`=1 WHERE `id`='$userId'");
@@ -67,7 +71,6 @@ require('config.php');
                 //show reward(check json to know points, and content)
                 //display de points and user
             }
-
         } else {
             // Fallback behaviour goes here
         }   
