@@ -6,6 +6,7 @@
   <title>qrs</title>
   <meta name="description" content="qrs">
   <meta name="author" content="Jordi">
+  <link rel="stylesheet" type="text/css" href="style.css"></link>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 </head>
@@ -109,53 +110,13 @@ require('config.php');
 
 </script>
 <style>
-    body{
-        margin: 0;
-        font-size: 14pt;
-        font-family: 'Courier New', Courier, monospace;
-    }
-    *{
-        font-size: 14pt;
-        font-family: 'Courier New', Courier, monospace;
-    }
-    header{
-        padding: 20px;
-        background-color: #080808;
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .logo{
-        width:50px;
-        border-radius: 50%;
-    }
-    .user-info > *{
-        display: block;
-        text-align: right;
-    }
-    #user-name{
-        font-size: 20pt;
-        text-transform: uppercase;
-    }
-    #user-points{
-        padding: 5px 0;
-        font-weight: bold;
-    }
-    .container{
-        padding: 20px;
-        display: block;
-        width: calc(100% - 40px);
-        max-width: 400px;
-        margin: 0 auto;
-    }
     .reward{
         background-color: grey;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin: 50px auto;
+        margin: 0 auto;
         width: 200px;
         height: 200px;
         border-radius: 50%;
@@ -168,19 +129,10 @@ require('config.php');
     }
     .embedded-content{
         width:100%;
+        margin: 30px 0;
     }
     .embedded-content > *{
         width:inherit;
-    }
-    .main-btn{
-        display: block;
-        margin: 50px auto;
-        width: 100%;
-        max-width: 320px;
-        padding: 20px;
-        background-color: black;
-        color: white;
-        border:none;
     }
 </style>
 </html>

@@ -1,0 +1,46 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>404</title>
+    <meta name="description" content="404">
+    <meta name="author" content="JORDI">
+    <link rel="stylesheet" type="text/css" href="style.css"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="https://www.fillmurray.com/g/100/100">
+        <div class="user-info">
+            <span id="user-name"></span>
+            <span id="user-points"></span>
+        </div>
+    </header>
+    <div class="notification">
+    </div>
+    <section class="container">
+        <p class="message">
+            <h1>404</h1>
+            <h2> Sorry, this page doesn't exist</h2>
+            <p>Open your camera to find another QR code!</p>
+        </p>
+    </section>
+</body>
+<script>
+        //Get data for menu, points and username from cookies
+        var userPoints = getCookieValue("points");
+        var userName = getCookieValue("name");
+        document.getElementById("user-name").innerHTML = userName;
+        document.getElementById("user-points").innerHTML = userPoints + " pts";
+
+        function getCookieValue(a) {
+            var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
+            return b ? b.pop() : '';
+        }
+</script>
+
+</html>
