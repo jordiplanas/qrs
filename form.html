@@ -16,7 +16,7 @@
         <p id="message"></p>
     </div>
     <img class="hero-img" src="https://www.fillmurray.com/g/500/500">
-    <div class="form">
+    <section class="container">
         <h1>Registration</h1>
         <form name="registration" id="my-form" action="" method="post">
             <input class="input" type="text" name="name" placeholder="Username" required />
@@ -27,7 +27,7 @@
             </div>
             <input class="main-btn" type="submit" name="submit" value="Register" />
         </form>
-    </div>
+    </section>
     <script>
         $(document).ready(function() {
             $("#my-form").submit(function(e) {
@@ -84,7 +84,7 @@
     .hero-img{
         width: 100vw;
     }
-    .form{
+    .container{
         padding: 20px;
         display: block;
         width: calc(100% - 40px);

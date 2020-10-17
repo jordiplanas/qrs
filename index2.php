@@ -33,7 +33,7 @@ require('config.php');
         
         //user has an Id, has been on the site 
         $userId = $_COOKIE['userId'];
-        echo "welcome back id: " . $userId;
+        // echo "welcome back id: " . $userId;
         // get params from qr url 
         if (isset($_GET['id'])) {
             $qr = $_GET['id'];
@@ -44,8 +44,7 @@ require('config.php');
                 $qrResult= $row[$qr];
             }
             if($qrResult>0){
-                //user visited the QR- show error ups screen
-                echo "you allready scanned that QR";
+                //QR code already scanned --> send to already scanned error page
             }else{
                 //update qrs database to visited qr
                 $updateQR = mysqli_query($conn, "UPDATE `codes` SET `$qr`=1 WHERE `id`='$userId'");
@@ -75,29 +74,113 @@ require('config.php');
   
 
 ?>
-<div id="menu" style="font-size:20px"></div>
+    <header>
+        <img class="logo" src="https://www.fillmurray.com/g/100/100">
+        <div class="user-info">
+            <span id="user-name"></span>
+            <span id="user-points"></span>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="reward">
+            <span id="points">10</span>
+            <span>pts</span>
+        </div>
+        <div class="embedded-content">
+            <img class="image" src="https://www.fillmurray.com/g/400/300">
+        </div>
+        <button class="main-btn"> RANKING </button>
+    </section>
 
 </body>
 <script>
 
     //Get data for menu, points and username from cookies
     var userPoints = getCookieValue("points");
-        var userName = getCookieValue("name");
-        document.getElementById("menu").innerHTML = "Hi: " + userName + "! Your points:" + userPoints;
+    var userName = getCookieValue("name");
+    document.getElementById("user-name").innerHTML = userName;
+    document.getElementById("user-points").innerHTML = userPoints + " pts";
 
-        function getCookieValue(a) {
-            var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
-            return b ? b.pop() : '';
-        }
+    function getCookieValue(a) {
+        var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
+        return b ? b.pop() : '';
+    }
 
 </script>
 <style>
+    body{
+        margin: 0;
+        font-size: 14pt;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    *{
+        font-size: 14pt;
+        font-family: 'Courier New', Courier, monospace;
+    }
     header{
-        padding: 30px;
+        padding: 20px;
         background-color: #080808;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     .logo{
+        width:50px;
         border-radius: 50%;
+    }
+    .user-info > *{
+        display: block;
+        text-align: right;
+    }
+    #user-name{
+        font-size: 20pt;
+        text-transform: uppercase;
+    }
+    #user-points{
+        padding: 5px 0;
+        font-weight: bold;
+    }
+    .container{
+        padding: 20px;
+        display: block;
+        width: calc(100% - 40px);
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    .reward{
+        background-color: grey;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 50px auto;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        color: white;
+        text-align: center;
+    }
+    #points{
+        font-size: 50pt;
+        font-weight: bold;
+    }
+    .embedded-content{
+        width:100%;
+    }
+    .embedded-content > *{
+        width:inherit;
+    }
+    .main-btn{
+        display: block;
+        margin: 50px auto;
+        width: 100%;
+        max-width: 320px;
+        padding: 20px;
+        background-color: black;
+        color: white;
+        border:none;
     }
 </style>
 </html>
