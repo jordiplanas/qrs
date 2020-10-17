@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>qrs</title>
   <meta name="description" content="qrs">
   <meta name="author" content="Jordi">
@@ -74,6 +75,7 @@ require('config.php');
   
 
 ?>
+
 <div id="menu" style="font-size:20px"></div>
 
 <script>

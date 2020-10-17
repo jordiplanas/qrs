@@ -1,11 +1,15 @@
 <?php
 $servername   = "localhost";
-// $database = "qrs";
-// $username = "root";
-// $password = "root";
-$database = "codesqr";
-$username = "myvimod68";
-$password = "eo25m3pq";
+
+// local server
+$database = "qrs";
+$username = "root";
+$password = "root";
+
+// vimod server
+// $database = "codesqr";
+// $username = "myvimod68";
+// $password = "eo25m3pq";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);

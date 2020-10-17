@@ -4,6 +4,7 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>FORM</title>
     <meta name="description" content="FORM">
     <meta name="author" content="JORDI">
@@ -11,9 +12,6 @@
 </head>
 
 <body>
-    <!-- <header>
-        <img class="logo" src="https://www.fillmurray.com/g/100/100">
-    </header> -->
     <img class="hero-img" src="https://www.fillmurray.com/g/500/500">
     <p id="message"></p>
     <div class="form">
@@ -21,11 +19,11 @@
         <form name="registration" id="my-form" action="" method="post">
             <input type="text" name="name" placeholder="Username" required />
             <!-- <input type="email" name="email" placeholder="Email" required /> -->
-            <div>
+            <div class="radio-btn">
                 <input type="radio" id="privacy" name="privacy" value="huey">
                 <label for="huey">Accept privacy policy</label>
             </div>
-            <input type="submit" name="submit" value="Register" />
+            <input class="main-btn" type="submit" name="submit" value="Register" />
         </form>
     </div>
     <script>
@@ -61,7 +59,11 @@
 <style>
     body{
         margin: 0;
-        font-size: 30pt;
+        font-size: 14pt;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    *{
+        font-size: 14pt;
         font-family: 'Courier New', Courier, monospace;
     }
     header{
@@ -75,15 +77,41 @@
         width: 100vw;
     }
     .form{
-        padding: 50px;
+        padding: 20px;
+        display: block;
+        width: calc(100% - 40px);
+        max-width: 400px;
+        margin: 0 auto;
     }
     h1{
-        font-size: 30pt;
-        color: grey;
+        color: lightgrey;
+        margin:20px 0;
     }
     input[type=text]{
+        width: calc(100% - 50px);
+        padding:20px 25px;
+        border: none;
+        background-color: lightgrey;
+        border-radius: 10px;
+    }
+
+    input[type=text]::placeholder{
+        color: black;
+        font-size: 16pt;
+    }
+    .radio-btn{
+        margin:20px 0;
+        color: grey;
+    }
+    .main-btn{
+        display: block;
+        margin: 50px auto;
         width: 100%;
-        padding:50px;
+        max-width: 320px;
+        padding: 20px;
+        background-color: black;
+        color: white;
+        border:none;
     }
 </style>
 
