@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="style.css"></link>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+  <script type="text/javascript" src="header.js"></script>
 </head>
 <body>
 <?php
@@ -23,7 +24,7 @@ require('config.php');
         if (isset($_GET['id'])) {
             setcookie('prevUrl', $_GET['id']);
             // echo "<script> window.location.href='http://localhost:8888/form.html';</script>";
-           // header("Location: http://vimod.net/qrs/form.html"); 
+            // header("Location: http://vimod.net/qrs/form.html"); 
             echo "you're redirected";
             echo "<script>window.location='form.html';</script>";
             exit();
@@ -31,49 +32,53 @@ require('config.php');
     }else{
         //user has an Id, has been on the site 
         $userId = $_COOKIE['userId'];
-        // echo "welcome back id: " . $userId;
         // get params from qr url 
         if (isset($_GET['id'])) {
             $qr = $_GET['id'];
-            //check visited de Qr parameter id
+            //check visited the Qr parameter id
             $sql_id= "SELECT `$qr` FROM `codes` WHERE `id`='$userId'";
             $result= mysqli_query($conn, $sql_id);
             if(!$result){
                 //if the QR doesn't exist --> send to 404 error page
                 // echo "QR doesn't exist";
                 echo "<script>window.location='404.html';</script>";
+                exit();
             }
             while ($row = $result->fetch_assoc()) {
                 $qrResult= $row[$qr];
             }
             if($qrResult>0){
                 //QR code already scanned --> send to already scanned error page
-                // echo "already scanned";
+                // echo "QR already scanned";
                 echo "<script>window.location='invalid.html';</script>";
-            }else{
-                //update qrs database to visited qr
-                $updateQR = mysqli_query($conn, "UPDATE `codes` SET `$qr`=1 WHERE `id`='$userId'");
-                //get user points
-                $sql_points= "SELECT `points` FROM `users` WHERE `id`='$userId'";
-                $resultPoints= mysqli_query($conn, $sql_points);
-                while ($row = $resultPoints->fetch_assoc()) {
-                    $pointsResult= $row['points'];
-                }
-                // update points of user
-                if($qr<6){
-                    $pointsResult+=10;
-                }else{
-                    $pointsResult+=15;
-                }
-                $updatePoints = mysqli_query($conn, "UPDATE `users` SET `points`='$pointsResult' WHERE `id`='$userId'");
-                echo "points_ " .  $pointsResult;
-                setcookie('points', $pointsResult);
-                //show reward(check json to know points, and content)
-                //display de points and user
+                exit();
             }
-        } else {
-            // Fallback behaviour goes here
-        }   
+            //update qrs database to visited qr
+            $updateQR = mysqli_query($conn, "UPDATE `codes` SET `$qr`=1 WHERE `id`='$userId'");
+            //get user points
+            $sql_points= "SELECT `points` FROM `users` WHERE `id`='$userId'";
+            $resultPoints= mysqli_query($conn, $sql_points);
+            while ($row = $resultPoints->fetch_assoc()) {
+                $userPoints= $row['points'];
+            }
+            $json = file_get_contents('data/data.json');
+            $data = json_decode($json, true); // decode the JSON into an associative array
+            $qrData = $data[$qr];
+            $points = $qrData["points"];
+
+            // update points of user
+            if($points){
+                $userPoints += $points;
+            }
+            $updatePoints = mysqli_query($conn, "UPDATE `users` SET `points`='$userPoints' WHERE `id`='$userId'");
+            $expire=time() + (14 * 24 * 60 * 60);
+            setcookie('points', $userPoints, $expire);
+            echo $userPoints;
+
+            $embedded = $qrData["embedded"];
+            // check to display embedded content or not
+            $displayEmbedded = $embedded ?  'block' : 'none';     
+        }  
     }
   
 
@@ -88,78 +93,19 @@ require('config.php');
 
     <section class="container">
         <div class="reward">
-            <span id="points">+00</span>
+            <span id="points">+<?php echo $points; ?></span>
             <span>pts</span>
         </div>
-        <div class="embedded-content">
-            <div id="embedded">
-                <!-- image -->
-                <!-- <img id="image" src="https://www.fillmurray.com/g/400/300"> -->
+        <div class="embedded-container">
+            <div class="embedded-content" style="display: <?php echo $displayEmbedded; ?>">
+                    <iframe src="<?php echo $embedded; ?>" frameBorder="0"></iframe>
             </div>
         </div>
         <button class="main-btn"> RANKING </button>
     </section>
 
 </body>
-<script>
-    let data = {};
-    // load json
-    function loadJSON(callback) {   
-        var xobj = new XMLHttpRequest();
-            xobj.overrideMimeType("application/json");
-            xobj.open('GET', 'data/data.json', true);
-            xobj.onreadystatechange = function () {
-            if (xobj.readyState == 4 && xobj.status == "200") {
-                // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-                callback(xobj.responseText);
-            }
-        };
-        xobj.send(null);  
-    }
 
-    loadJSON(function(response) {
-        // Parse JSON string into object
-        const json = JSON.parse(response);
-        fetchData(json);
-    });
-    
-    function fetchData(json) {
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const id = urlParams.get('id')
-        data = json[id];
-        console.log(data);
-        assignData(data);
-    }
-
-    function assignData(data){
-        const pointsEl = document.getElementById("points");
-        const embeddedEl = document.getElementById("embedded");
-        if(data.points){
-            pointsEl.innerHTML = '+' + data.points;
-        }
-        if(data.embedded){
-            const iframe = document.createElement('iframe');
-            iframe.src = data.embedded;
-            iframe.frameBorder = 0;
-            embeddedEl.appendChild(iframe);
-        } else {
-            embeddedEl.style.display = 'none';
-        }
-    }
-    
-    //Get data for menu, points and username from cookies
-    var userPoints = getCookieValue("points");
-    var userName = getCookieValue("name");
-    document.getElementById("user-name").innerHTML = userName;
-    document.getElementById("user-points").innerHTML = userPoints + " pts";
-
-    function getCookieValue(a) {
-        var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
-        return b ? b.pop() : '';
-    }
-
-</script>
 <style>
     .reward{
         background-color: grey;
@@ -178,14 +124,13 @@ require('config.php');
         font-size: 50pt;
         font-weight: bold;
     }
-    .embedded-content{
-        width:100%;
+    .embedded-container{
         margin: 30px 0;
     }
-    #embedded{
+    .embedded-content{
         width:100%;
     }
-    #embedded > *{
+    .embedded-content > *{
         width:inherit;
     }
 </style>
