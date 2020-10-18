@@ -48,8 +48,8 @@ require('config.php');
             }
             if($qrResult>0){
                 //QR code already scanned --> send to already scanned error page
-                echo "already scanned";
-                // echo "<script>window.location='invalid.html';</script>";
+                // echo "already scanned";
+                echo "<script>window.location='invalid.html';</script>";
             }else{
                 //update qrs database to visited qr
                 $updateQR = mysqli_query($conn, "UPDATE `codes` SET `$qr`=1 WHERE `id`='$userId'");
@@ -88,18 +88,66 @@ require('config.php');
 
     <section class="container">
         <div class="reward">
-            <span id="points">10</span>
+            <span id="points">+00</span>
             <span>pts</span>
         </div>
         <div class="embedded-content">
-            <img class="image" src="https://www.fillmurray.com/g/400/300">
+            <div id="embedded">
+                <!-- image -->
+                <!-- <img id="image" src="https://www.fillmurray.com/g/400/300"> -->
+            </div>
         </div>
         <button class="main-btn"> RANKING </button>
     </section>
 
 </body>
 <script>
+    let data = {};
+    // load json
+    function loadJSON(callback) {   
+        var xobj = new XMLHttpRequest();
+            xobj.overrideMimeType("application/json");
+            xobj.open('GET', 'data/data.json', true);
+            xobj.onreadystatechange = function () {
+            if (xobj.readyState == 4 && xobj.status == "200") {
+                // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+                callback(xobj.responseText);
+            }
+        };
+        xobj.send(null);  
+    }
 
+    loadJSON(function(response) {
+        // Parse JSON string into object
+        const json = JSON.parse(response);
+        fetchData(json);
+    });
+    
+    function fetchData(json) {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const id = urlParams.get('id')
+        data = json[id];
+        console.log(data);
+        assignData(data);
+    }
+
+    function assignData(data){
+        const pointsEl = document.getElementById("points");
+        const embeddedEl = document.getElementById("embedded");
+        if(data.points){
+            pointsEl.innerHTML = '+' + data.points;
+        }
+        if(data.embedded){
+            const iframe = document.createElement('iframe');
+            iframe.src = data.embedded;
+            iframe.frameBorder = 0;
+            embeddedEl.appendChild(iframe);
+        } else {
+            embeddedEl.style.display = 'none';
+        }
+    }
+    
     //Get data for menu, points and username from cookies
     var userPoints = getCookieValue("points");
     var userName = getCookieValue("name");
@@ -134,7 +182,10 @@ require('config.php');
         width:100%;
         margin: 30px 0;
     }
-    .embedded-content > *{
+    #embedded{
+        width:100%;
+    }
+    #embedded > *{
         width:inherit;
     }
 </style>
