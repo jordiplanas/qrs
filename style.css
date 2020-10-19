@@ -7,7 +7,6 @@ body{
 *{
     font-size: 14pt;
     font-family: 'Courier New', Courier, monospace;
-    text-transform: capitalize;
 }
 header{
     padding: 20px;

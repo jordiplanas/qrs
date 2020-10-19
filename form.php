@@ -10,7 +10,7 @@
     <meta name="author" content="JORDI">
     <link rel="stylesheet" type="text/css" href="style.css"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/php" src="lang.php"></script>
+    <?php include('lang.php'); ?>
 </head>
 
 <body>
@@ -20,10 +20,9 @@
     <img class="hero-img" src="https://www.fillmurray.com/g/500/500">
     <section class="container">
         <form name="registration" id="my-form" action="" method="post">
-            <input class="input" type="text" name="name" placeholder="Username" autocomplete="username" required />
-            <input class="input" type="password" name="password" placeholder="password" autocomplete="current-password" required />
-
-            <input class="main-btn" type="submit" name="submit" value="Register" />
+            <input class="input" type="text" name="name" placeholder="<?php echo $copy["form:username"]; ?>" autocomplete="username" required />
+            <input class="input" type="password" name="password" placeholder="<?php echo $copy["form:password"]; ?>" autocomplete="current-password" required />
+            <input class="main-btn" type="submit" name="submit" value="<?php echo $copy["form:button"]; ?>" />
         </form>
     </section>
     <script>
@@ -41,7 +40,7 @@
                         console.log(res);
                         if(res == 'success') {
                             // NEW USER SUCCESS
-                            window.location.href = 'welcome.html';
+                            window.location.href = 'welcome.php';
                         } else if(res == 'return') {
                             // RETURNING USER 
                             $(".notification").css('display', 'block');

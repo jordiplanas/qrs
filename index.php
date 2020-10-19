@@ -28,8 +28,8 @@ if(!isset($_COOKIE['userId'])) {
     //rember the qr url
     if (isset($_GET['id'])) {
         setcookie('prevUrl', $_GET['id']);
-        // header("Location: http://vimod.net/qrs/form.html"); 
-        echo "<script>window.location='form.html';</script>";
+        // header("Location: http://vimod.net/qrs/form.php"); 
+        echo "<script>window.location='form.php';</script>";
         exit();
     }
 }else{
@@ -44,7 +44,7 @@ if(!isset($_COOKIE['userId'])) {
         if(!$result){
             //if the QR doesn't exist --> send to 404 error page
             // echo "QR doesn't exist";
-            echo "<script>window.location='404.html';</script>";
+            echo "<script>window.location='404.php';</script>";
             exit();
         }
         while ($row = $result->fetch_assoc()) {
@@ -53,7 +53,7 @@ if(!isset($_COOKIE['userId'])) {
         if($qrResult>0){
             //QR code already scanned --> send to already scanned error page
             // echo "QR already scanned";
-            echo "<script>window.location='invalid.html';</script>";
+            echo "<script>window.location='invalid.php';</script>";
             exit();
         }
         //update qrs database to visited qr

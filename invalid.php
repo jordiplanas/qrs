@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="style.css"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="header.js"></script>
+    <?php include('lang.php'); ?>
 </head>
 
 <body>
@@ -22,11 +23,11 @@
         </div>
     </header>
     <section class="container">
-        <p class="message">
-            <h1>404</h1>
-            <h2> Sorry, this page doesn't exist</h2>
-            <p>Open your camera to find another QR code!</p>
-        </p>
+        <div class="message">
+            <h1><?php echo $copy["invalid:title"]; ?></h1>
+            <h2> <?php echo $copy["invalid:subtitle"]; ?></h2>
+            <p><?php echo $copy["invalid:p"]; ?></p>
+        </div>
     </section>
 </body>
 </html>

@@ -1,4 +1,13 @@
 id,es,ca
-form:username,nombre,nombre
+form:username,nombre,nom
 form:password,contraseña,contrasenya
 form:button,Entrar,Iniciar
+welcome:title,Thanks for playing!,Thanks for playing!
+welcome:p,Now you can start scanning Qr codes with your phone camera,Now you can start scanning Qr codes with your phone camera
+welcome:button,Let's go,Let's go
+404:title,404,404
+404:subtitle,"Sorry, this page doesn't exist","Sorry, this page doesn't exist"
+404:p,Open your camera to find another QR code!,Open your camera to find another QR code!
+invalid:title,Uups,Uups
+invalid:subtitle,Looks like you've already scanned this QR.,Looks like you've already scanned this QR.
+invalid:p,Open your camera to find another QR code!,Open your camera to find another QR code!

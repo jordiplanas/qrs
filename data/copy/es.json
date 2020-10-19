@@ -1,1 +1,1 @@
-{"form:username":"nombre","form:password":"contraseña","form:button":"Entrar"}
+{"form:username":"nombre","form:password":"contraseña","form:button":"Entrar","welcome:title":"Thanks for playing!","welcome:p":"Now you can start scanning Qr codes with your phone camera","welcome:button":"Let's go","404:title":"404","404:subtitle":"Sorry, this page doesn't exist","404:p":"Open your camera to find another QR code!","invalid:title":"Uups","invalid:subtitle":"Looks like you've already scanned this QR.","invalid:p":"Open your camera to find another QR code!"}

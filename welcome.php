@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="style.css"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="header.js"></script>
+    <?php include('lang.php'); ?>
 </head>
 
 <body>
@@ -22,11 +23,11 @@
         </div>
     </header>
     <section class="container">
-        <p class="message">
-            <h1> Thanks for playing! </h1>
-            <p>Now you can start scanning Qr codes with your phone camera</p>
-        </p>
-        <button class="main-btn" onclick="btnClick()"> LET'S GO </button>
+        <div class="message">
+            <h1><?php echo $copy["welcome:title"]; ?></h1>
+            <p><?php echo $copy["welcome:p"]; ?></p>
+        </div>
+        <button class="main-btn" onclick="btnClick()"><?php echo $copy["welcome:button"]; ?></button>
     </section>
 </body>
 <script>
