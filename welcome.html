@@ -23,10 +23,20 @@
     </header>
     <section class="container">
         <p class="message">
-            <h1>404</h1>
-            <h2> Sorry, this page doesn't exist</h2>
-            <p>Open your camera to find another QR code!</p>
+            <h1> Thanks for playing! </h1>
+            <p>Now you can start scanning Qr codes with your phone camera</p>
         </p>
+        <button class="main-btn" onclick="btnClick()"> LET'S GO </button>
     </section>
 </body>
+<script>
+    function btnClick(){
+        var id = getCookieValue("prevUrl");
+        window.location.href = 'index.php?id=' + id;
+    }
+    function getCookieValue(a) {
+        var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
+        return b ? b.pop() : '';
+    }
+</script>
 </html>

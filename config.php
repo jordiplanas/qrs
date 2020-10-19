@@ -1,15 +1,16 @@
 <?php
 $servername   = "localhost";
 
-// local server
-//$database = "qrs";
-//$username = "root";
-//$password = "root";
-
-//jordis local server
+// aurel local server
 $database = "qrs";
 $username = "root";
-$password = "";
+$password = "root";
+
+//jordis local server
+// $database = "qrs";
+// $username = "root";
+// $password = "";
+
 // vimod server
 // $database = "codesqr";
 // $username = "myvimod68";

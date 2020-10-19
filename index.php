@@ -24,7 +24,6 @@ require('config.php');
         if (isset($_GET['id'])) {
             setcookie('prevUrl', $_GET['id']);
             // header("Location: http://vimod.net/qrs/form.html"); 
-            echo "you're redirected";
             echo "<script>window.location='form.html';</script>";
             exit();
         }
@@ -72,7 +71,6 @@ require('config.php');
             $updatePoints = mysqli_query($conn, "UPDATE `users` SET `points`='$userPoints' WHERE `id`='$userId'");
             $expire=time() + (14 * 24 * 60 * 60);
             setcookie('points', $userPoints, $expire);
-            echo $userPoints;
 
             $embedded = $qrData["embedded"];
             // check to display embedded content or not
@@ -100,7 +98,7 @@ require('config.php');
                     <iframe src="<?php echo $embedded; ?>" frameBorder="0"></iframe>
             </div>
         </div>
-        <button class="main-btn"> RANKING </button>
+        <!-- <button class="main-btn"> RANKING </button> -->
     </section>
 
 </body>

@@ -19,8 +19,8 @@
     <img class="hero-img" src="https://www.fillmurray.com/g/500/500">
     <section class="container">
         <form name="registration" id="my-form" action="" method="post">
-            <input class="input" type="text" name="name" placeholder="Username" required />
-            <input class="input" type="password" name="password" placeholder="password" required />
+            <input class="input" type="text" name="name" placeholder="Username" autocomplete="username" required />
+            <input class="input" type="password" name="password" placeholder="password" autocomplete="current-password" required />
 
             <input class="main-btn" type="submit" name="submit" value="Register" />
         </form>
@@ -35,15 +35,29 @@
                     method: "post",
                     data: $("form").serialize(),
                     dataType: "text",
-                    success: function(strMessage) {
+                    success: function(res) {
+                        res = res.trim();
+                        console.log(res);
+                        if(res == 'success') {
+                            window.location.href = 'welcome.html';
+                        } else if(res == 'return') {
+                            $(".notification").css('display', 'block');
+                            $("#message").text('welcome back!');
+                            $("#my-form")[0].reset();
+                            setTimeout(function() {
+                                //get the cookie to know the prev url
+                                var id = getCookieValue("prevUrl");
+                                window.location.href = 'index.php?id=' + id;
+                            }, 3000);
+                        } else {
+                            $(".notification").css('display', 'block');
+                            $("#message").text(res);
+                            $("#my-form")[0].reset();
+                        }
+                    },
+                    error: function () {
                         $(".notification").css('display', 'block');
-                        $("#message").text(strMessage);
-                        $("#my-form")[0].reset();
-                        setTimeout(function() {
-                            //get the cookie to know the prev url
-                            var id = getCookieValue("prevUrl");
-                            window.location.href = 'index.php?id=' + id;
-                        }, 3000);
+                        $("#message").text("there's been an error");
                     }
                 });
             });
