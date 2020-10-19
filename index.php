@@ -2,71 +2,136 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>qrs</title>
   <meta name="description" content="qrs">
   <meta name="author" content="Jordi">
+  <link rel="stylesheet" type="text/css" href="style.css"></link>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+  <script type="text/javascript" src="header.js"></script>
 </head>
 <body>
 <?php
 require('config.php');
-// If form submitted, insert values into the database.
-if (isset($_REQUEST['name']) && isset($_REQUEST['privacy'])){
-    $username = stripslashes($_REQUEST['name']);
-    $username = mysqli_real_escape_string($conn,$username); 
-    $email = stripslashes($_REQUEST['email']);
-    $email = mysqli_real_escape_string($conn,$email);
-    $sql_e = "SELECT * FROM `users` WHERE `mail`='$email'";
-    $sql_u = "SELECT * FROM `users` WHERE `name`='$username'";
-    $res_e = mysqli_query($conn, $sql_e);
-    $res_u = mysqli_query($conn, $sql_u);
-    if(mysqli_num_rows($res_e) > 0 && mysqli_num_rows($res_u) > 0 ){
-        echo "<div><h3>User already resgistered</h3></div>";	
-        setcookie('name', $username);
-        setcookie('email', $email);
-  	}
-	else if(mysqli_num_rows($res_e) > 0 && mysqli_num_rows($res_u) < 1 ){
-        echo "<div><h3>Sorry... email already taken</h3></div>";	
-      }
-    else{
-        setcookie('name', $username);
-        setcookie('email', $email);
-        $query = "INSERT INTO `users`(`name`, `mail`) VALUES ('$username', '$email')";
-        $result = mysqli_query($conn,$query);
-        if($result){
-            echo "<div><h3>You are registered successfully.</h3></div>";
+//check user exist
+
+    //cookies are enabled
+    if(!isset($_COOKIE['userId'])) { 
+        //user has no ID go to Register Form
+        echo "no cookie";
+        //rember the qr url
+        if (isset($_GET['id'])) {
+            setcookie('prevUrl', $_GET['id']);
+            // header("Location: http://vimod.net/qrs/form.html"); 
+            echo "you're redirected";
+            echo "<script>window.location='form.html';</script>";
+            exit();
         }
+    }else{
+        //user has an Id, has been on the site 
+        $userId = $_COOKIE['userId'];
+        // get params from qr url 
+        if (isset($_GET['id'])) {
+            $qr = $_GET['id'];
+            //check visited the Qr parameter id
+            $sql_id= "SELECT `$qr` FROM `codes` WHERE `id`='$userId'";
+            $result= mysqli_query($conn, $sql_id);
+            if(!$result){
+                //if the QR doesn't exist --> send to 404 error page
+                // echo "QR doesn't exist";
+                echo "<script>window.location='404.html';</script>";
+                exit();
+            }
+            while ($row = $result->fetch_assoc()) {
+                $qrResult= $row[$qr];
+            }
+            if($qrResult>0){
+                //QR code already scanned --> send to already scanned error page
+                // echo "QR already scanned";
+                echo "<script>window.location='invalid.html';</script>";
+                exit();
+            }
+            //update qrs database to visited qr
+            $updateQR = mysqli_query($conn, "UPDATE `codes` SET `$qr`=1 WHERE `id`='$userId'");
+            //get user points
+            $sql_points= "SELECT `points` FROM `users` WHERE `id`='$userId'";
+            $resultPoints= mysqli_query($conn, $sql_points);
+            while ($row = $resultPoints->fetch_assoc()) {
+                $userPoints= $row['points'];
+            }
+            $json = file_get_contents('data/data.json');
+            $data = json_decode($json, true); // decode the JSON into an associative array
+            $qrData = $data[$qr];
+            $points = $qrData["points"];
+
+            // update points of user
+            if($points){
+                $userPoints += $points;
+            }
+            $updatePoints = mysqli_query($conn, "UPDATE `users` SET `points`='$userPoints' WHERE `id`='$userId'");
+            $expire=time() + (14 * 24 * 60 * 60);
+            setcookie('points', $userPoints, $expire);
+            echo $userPoints;
+
+            $embedded = $qrData["embedded"];
+            // check to display embedded content or not
+            $displayEmbedded = $embedded ?  'block' : 'none';     
+        }  
     }
-}else{
-    echo "<div><h3>Please check all the fields and accept our policies</h3></div>";
-}
-// get params from qr url 
-if (isset($_GET['id'])) {
-    echo $_GET['id'];
-    setcookie('id', $_GET['id']);
+  
 
-
-} else {
-    // Fallback behaviour goes here
-}
 ?>
-  <div class="form">
-    <h1>Registration</h1>
-    <form name="registration" action="" method="post">
-    <input type="text" name="name" placeholder="Username" required />
-    <input type="email" name="email" placeholder="Email" required />
-    <div>
-        <input type="radio" id="privacy" name="privacy" value="huey">
-        <label for="huey">Accept privacy policy</label>
-    </div>
-    <input type="submit" name="submit" value="Register" />
-    </form>
-</div>
- <script>
+    <header>
+        <img class="logo" src="https://www.fillmurray.com/g/100/100">
+        <div class="user-info">
+            <span id="user-name"></span>
+            <span id="user-points"></span>
+        </div>
+    </header>
 
+    <section class="container">
+        <div class="reward">
+            <span id="points">+<?php echo $points; ?></span>
+            <span>pts</span>
+        </div>
+        <div class="embedded-container">
+            <div class="embedded-content" style="display: <?php echo $displayEmbedded; ?>">
+                    <iframe src="<?php echo $embedded; ?>" frameBorder="0"></iframe>
+            </div>
+        </div>
+        <button class="main-btn"> RANKING </button>
+    </section>
 
-console.log(document.cookie);
-</script>
 </body>
+
+<style>
+    .reward{
+        background-color: grey;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        color: white;
+        text-align: center;
+    }
+    #points{
+        font-size: 50pt;
+        font-weight: bold;
+    }
+    .embedded-container{
+        margin: 30px 0;
+    }
+    .embedded-content{
+        width:100%;
+    }
+    .embedded-content > *{
+        width:inherit;
+    }
+</style>
 </html>
 

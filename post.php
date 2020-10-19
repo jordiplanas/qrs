@@ -2,22 +2,31 @@
 require('config.php');
 //Create variables
 $name = $_POST['name'];
-$email = $_POST['email'];
-$query = mysqli_query($conn,"SELECT * FROM `users` WHERE `mail`='$email'");
+$email = $_POST['password'];
+$query = mysqli_query($conn,"SELECT * FROM `users` WHERE `mail`='$email' AND `name`='$name'");
+$queryName = mysqli_query($conn,"SELECT * FROM `users` WHERE  `name`='$name'");
 $sql = "INSERT INTO `users`(`name`, `mail`) VALUES ('$name', '$email')";
 
 //Make sure name is valid
 if(!preg_match("/^[a-zA-Z'-]+$/",$name)) { 
     die (" invalid first name");
 }
-//make sure user checked
+/*make sure user checked
 if(!isset($_POST['privacy'])){
-    die (" Please check privacy"); 
-}
+    die ("Please check privacy"); 
+}*/
 //Response
-//Checking to see if email already exsist
-if(mysqli_num_rows($query) > 0) {
-    echo "The email, " . $_POST['email'] . ", already exists.";
+//Checking to see if user allready exist
+if(mysqli_num_rows($queryName) > 0 && mysqli_num_rows($query) < 1) {
+    die ("Name already taken"); 
+}
+else if(mysqli_num_rows($query) > 0) {
+   echo "Welcome back";
+   while ($row = $query->fetch_assoc()) {
+        setcookie('userId',$row['id']);
+        setcookie('name',$row['name']);
+        setcookie('points', $row['points']);
+   }
 }
 else if(!mysqli_query($conn, $sql)) {
     echo 'Could not insert';

@@ -20,11 +20,8 @@
     <section class="container">
         <form name="registration" id="my-form" action="" method="post">
             <input class="input" type="text" name="name" placeholder="Username" required />
-            <input class="input" type="email" name="email" placeholder="Email" required />
-            <div class="radio-btn">
-                <input type="radio" id="privacy" name="privacy" value="huey">
-                <label for="huey">Accept privacy policy</label>
-            </div>
+            <input class="input" type="password" name="password" placeholder="password" required />
+
             <input class="main-btn" type="submit" name="submit" value="Register" />
         </form>
     </section>
@@ -39,13 +36,13 @@
                     data: $("form").serialize(),
                     dataType: "text",
                     success: function(strMessage) {
-                        $(".notification").css('display','block');
+                        $(".notification").css('display', 'block');
                         $("#message").text(strMessage);
                         $("#my-form")[0].reset();
                         setTimeout(function() {
                             //get the cookie to know the prev url
                             var id = getCookieValue("prevUrl");
-                            window.location.href = 'http://localhost:8888/index2.php?id=' + id;
+                            window.location.href = 'index.php?id=' + id;
                         }, 3000);
                     }
                 });
@@ -60,7 +57,7 @@
 </body>
 
 <style>
-    .notification{
+    .notification {
         position: absolute;
         display: none;
         top: 0;
@@ -69,30 +66,34 @@
         width: calc(100% - 40px);
         padding: 20px;
     }
-    #message{
+    
+    #message {
         margin: 0;
     }
-    .hero-img{
+    
+    .hero-img {
         width: 100vw;
         object-fit: cover;
         object-position: center;
     }
-    .input{
+    
+    .input {
         width: calc(100% - 50px);
-        padding:20px 25px;
+        padding: 20px 25px;
         border: none;
         background-color: lightgrey;
         border-radius: 10px;
         margin: 10px 0;
         display: block;
     }
-
-    .input::placeholder{
+    
+    .input::placeholder {
         color: black;
         font-size: 16pt;
     }
-    .radio-btn{
-        margin:20px 0;
+    
+    .radio-btn {
+        margin: 20px 0;
         color: grey;
     }
 </style>

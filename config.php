@@ -2,10 +2,14 @@
 $servername   = "localhost";
 
 // local server
+//$database = "qrs";
+//$username = "root";
+//$password = "root";
+
+//jordis local server
 $database = "qrs";
 $username = "root";
-$password = "root";
-
+$password = "";
 // vimod server
 // $database = "codesqr";
 // $username = "myvimod68";
@@ -17,7 +21,7 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
-  echo "Connected successfully";
+ // echo "Connected successfully";
 ?>
 
 
