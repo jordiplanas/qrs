@@ -14,69 +14,73 @@
 <body>
 <?php
 require('config.php');
-//check user exist
 
-    //cookies are enabled
-    if(!isset($_COOKIE['userId'])) { 
-        //user has no ID go to Register Form
-        echo "no cookie";
-        //rember the qr url
-        if (isset($_GET['id'])) {
-            setcookie('prevUrl', $_GET['id']);
-            // header("Location: http://vimod.net/qrs/form.html"); 
-            echo "<script>window.location='form.html';</script>";
+//set lang
+$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+$acceptLang = ['es', 'ca']; 
+$lang = in_array($lang, $acceptLang) ? $lang : 'es';
+setcookie('lang', $lang);
+
+//cookies are enabled
+if(!isset($_COOKIE['userId'])) { 
+    //user has no ID go to Register Form
+    echo "no cookie";
+    //rember the qr url
+    if (isset($_GET['id'])) {
+        setcookie('prevUrl', $_GET['id']);
+        // header("Location: http://vimod.net/qrs/form.html"); 
+        echo "<script>window.location='form.html';</script>";
+        exit();
+    }
+}else{
+    //user has an Id, has been on the site 
+    $userId = $_COOKIE['userId'];
+    // get params from qr url 
+    if (isset($_GET['id'])) {
+        $qr = $_GET['id'];
+        //check visited the Qr parameter id
+        $sql_id= "SELECT `$qr` FROM `codes` WHERE `id`='$userId'";
+        $result= mysqli_query($conn, $sql_id);
+        if(!$result){
+            //if the QR doesn't exist --> send to 404 error page
+            // echo "QR doesn't exist";
+            echo "<script>window.location='404.html';</script>";
             exit();
         }
-    }else{
-        //user has an Id, has been on the site 
-        $userId = $_COOKIE['userId'];
-        // get params from qr url 
-        if (isset($_GET['id'])) {
-            $qr = $_GET['id'];
-            //check visited the Qr parameter id
-            $sql_id= "SELECT `$qr` FROM `codes` WHERE `id`='$userId'";
-            $result= mysqli_query($conn, $sql_id);
-            if(!$result){
-                //if the QR doesn't exist --> send to 404 error page
-                // echo "QR doesn't exist";
-                echo "<script>window.location='404.html';</script>";
-                exit();
-            }
-            while ($row = $result->fetch_assoc()) {
-                $qrResult= $row[$qr];
-            }
-            if($qrResult>0){
-                //QR code already scanned --> send to already scanned error page
-                // echo "QR already scanned";
-                echo "<script>window.location='invalid.html';</script>";
-                exit();
-            }
-            //update qrs database to visited qr
-            $updateQR = mysqli_query($conn, "UPDATE `codes` SET `$qr`=1 WHERE `id`='$userId'");
-            //get user points
-            $sql_points= "SELECT `points` FROM `users` WHERE `id`='$userId'";
-            $resultPoints= mysqli_query($conn, $sql_points);
-            while ($row = $resultPoints->fetch_assoc()) {
-                $userPoints= $row['points'];
-            }
-            $json = file_get_contents('data/data.json');
-            $data = json_decode($json, true); // decode the JSON into an associative array
-            $qrData = $data[$qr];
-            $points = $qrData["points"];
+        while ($row = $result->fetch_assoc()) {
+            $qrResult= $row[$qr];
+        }
+        if($qrResult>0){
+            //QR code already scanned --> send to already scanned error page
+            // echo "QR already scanned";
+            echo "<script>window.location='invalid.html';</script>";
+            exit();
+        }
+        //update qrs database to visited qr
+        $updateQR = mysqli_query($conn, "UPDATE `codes` SET `$qr`=1 WHERE `id`='$userId'");
+        //get user points
+        $sql_points= "SELECT `points` FROM `users` WHERE `id`='$userId'";
+        $resultPoints= mysqli_query($conn, $sql_points);
+        while ($row = $resultPoints->fetch_assoc()) {
+            $userPoints= $row['points'];
+        }
+        $json = file_get_contents('data/data.json');
+        $data = json_decode($json, true); // decode the JSON into an associative array
+        $qrData = $data[$qr];
+        $points = $qrData["points"];
 
-            // update points of user
-            if($points){
-                $userPoints += $points;
-            }
-            $updatePoints = mysqli_query($conn, "UPDATE `users` SET `points`='$userPoints' WHERE `id`='$userId'");
-            $expire=time() + (14 * 24 * 60 * 60);
-            setcookie('points', $userPoints, $expire);
+        // update points of user
+        if($points){
+            $userPoints += $points;
+        }
+        $updatePoints = mysqli_query($conn, "UPDATE `users` SET `points`='$userPoints' WHERE `id`='$userId'");
+        setcookie('points', $userPoints);
 
-            $embedded = $qrData["embedded"];
-            // check to display embedded content or not
-            $displayEmbedded = $embedded ?  'block' : 'none';     
-        }  
-    }
+        $embedded = $qrData["embedded"];
+        // check to display embedded content or not
+        $displayEmbedded = $embedded ?  'block' : 'none';     
+    }  
+}
   
 
 ?>

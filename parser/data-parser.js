@@ -8,7 +8,7 @@ const csv = require("csvtojson/v1");
 const fs = require("fs-extra");
 
 const inPath = path.resolve(__dirname, "in", "data.csv");
-const outPath = "./data/";
+const outPath = "./data/data.json";
 const outputData = {};
 
 csv({
@@ -22,8 +22,8 @@ csv({
     outputData[csvRow[0]] = obj;
     // console.log(outputData);
   }).on('done',()=>{
-    fs.writeFileSync(`${outPath}data.json`, JSON.stringify(outputData), {
+    fs.writeFileSync(`${outPath}`, JSON.stringify(outputData), {
       encoding: "utf8"
     })
-    console.log("ending parse File written", `${outPath}data.json`);
+    console.log("ending parse File written", `${outPath}`);
   })

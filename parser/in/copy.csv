@@ -1,0 +1,4 @@
+id,es,ca
+form:username,nombre,nombre
+form:password,contraseña,contrasenya
+form:button,Entrar,Iniciar
