@@ -39,17 +39,19 @@
                         res = res.trim();
                         console.log(res);
                         if(res == 'success') {
+                            // NEW USER SUCCESS
                             window.location.href = 'welcome.html';
                         } else if(res == 'return') {
+                            // RETURNING USER 
                             $(".notification").css('display', 'block');
                             $("#message").text('welcome back!');
                             $("#my-form")[0].reset();
                             setTimeout(function() {
-                                //get the cookie to know the prev url
                                 var id = getCookieValue("prevUrl");
                                 window.location.href = 'index.php?id=' + id;
-                            }, 3000);
+                            }, 2000);
                         } else {
+                            // ERROR
                             $(".notification").css('display', 'block');
                             $("#message").text(res);
                             $("#my-form")[0].reset();
@@ -57,7 +59,8 @@
                     },
                     error: function () {
                         $(".notification").css('display', 'block');
-                        $("#message").text("there's been an error");
+                        $("#message").text("There's been an error");
+                        $("#my-form")[0].reset();
                     }
                 });
             });

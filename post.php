@@ -43,7 +43,6 @@ else {
     //Create an empty database of qr codes
     $query2 = mysqli_query($conn,"INSERT INTO `codes`(`id`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`) VALUES ('$userId',0,0,0,0,0,0,0,0,0,0)");
     echo "success";
-    // echo "Thank you, " . $_POST['name'] . ". Your information has been inserted successfully.";
 }
 
 //Close connection
