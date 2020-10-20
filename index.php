@@ -10,16 +10,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <script type="text/javascript" src="header.js"></script>
+  <?php include('lang.php'); ?>
 </head>
 <body>
 <?php
 require('config.php');
-
-//set lang
-$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-$acceptLang = ['es', 'ca']; 
-$lang = in_array($lang, $acceptLang) ? $lang : 'es';
-setcookie('lang', $lang);
 
 //cookies are enabled
 if(!isset($_COOKIE['userId'])) { 
@@ -81,8 +76,6 @@ if(!isset($_COOKIE['userId'])) {
         $displayEmbedded = $embedded ?  'block' : 'none';     
     }  
 }
-  
-
 ?>
     <header>
         <img class="logo" src="https://www.fillmurray.com/g/100/100">
