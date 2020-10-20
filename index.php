@@ -88,7 +88,7 @@ if(!isset($_COOKIE['userId'])) {
     <section class="container">
         <div class="reward">
             <span id="points">+<?php echo $points; ?></span>
-            <span>pts</span>
+            <span>Llumipunts</span>
         </div>
         <div class="embedded-container">
             <div class="embedded-content" style="display: <?php echo $displayEmbedded; ?>">
