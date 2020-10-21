@@ -87,8 +87,7 @@ if(!isset($_COOKIE['userId'])) {
 
     <section class="container">
         <div class="reward">
-            <span id="points">+<?php echo $points; ?></span>
-            <span>Llumipunts</span>
+            <img id="points" src="images/<?php echo $points; ?>.gif" alt="+<?php echo $points; ?> llumipunts">
         </div>
         <div class="embedded-container">
             <div class="embedded-content" style="display: <?php echo $displayEmbedded; ?>">
@@ -102,21 +101,15 @@ if(!isset($_COOKIE['userId'])) {
 
 <style>
     .reward{
-        background-color: grey;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         margin: 0 auto;
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        color: white;
         text-align: center;
     }
     #points{
-        font-size: 50pt;
-        font-weight: bold;
+        width:100%;
     }
     .embedded-container{
         margin: 30px 0;

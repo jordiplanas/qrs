@@ -2,13 +2,12 @@ id,es,ca
 form:username,nombre,nom
 form:password,contraseña,contrassenya
 form:button,Acceder,Accedir
-welcome:title,Gracias por registrarte!,Gràcies per registrar-te! 
-welcome:p,Ara escanea los códigos QR y captura las criaturas mágicas. Gana Lucipuntos para conseguir premios y descuentos!,Ara escaneja els codis QR i captura a les criatures màgiques. Guanya Llumipunts per aconseguir premis i descomptes! 
+welcome:title,Gracias por registrarte!,Gràcies per registrar-te!
+welcome:p,Ara escanea los códigos QR y captura las criaturas mágicas. Gana Lucipuntos para conseguir premios y descuentos!,Ara escaneja els codis QR i captura a les criatures màgiques. Guanya Llumipunts per aconseguir premis i descomptes!
 welcome:button,Vamos,Som-hi
 404:title,404,404
 404:subtitle,"Lo sentimos, esta página no existe.","Ho sentim, aquesta pàgina no existeix."
 404:p,Abre la cámera para escanear otro QR.,Obre la càmera per escanejar un altre QR
-invalid:title,Uups! Vaya lío!,"Ups! L’has feta bona! 
-Sembla que ja havies escanejat aquest codi QR. "
-invalid:subtitle,Parece que ya habías escaneado este QR.,Looks like you've already scanned this QR.
+invalid:title,Uups! Vaya lío!,Ups! L’has feta bona! 
+invalid:subtitle,Parece que ya habías escaneado este QR.,Sembla que ja havies escanejat aquest codi QR.
 invalid:p,Abre la cámera para escanear otro QR.,Obre la càmera per escanejar un altre QR.
