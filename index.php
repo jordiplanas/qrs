@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>qrs</title>
+  <title>llumipunts</title>
   <meta name="description" content="qrs">
   <meta name="author" content="Jordi">
   <link rel="stylesheet" type="text/css" href="style.css"></link>

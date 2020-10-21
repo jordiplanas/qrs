@@ -1,15 +1,20 @@
 <?php
 $servername   = "localhost";
 
+// final server
+$database = "llumipunts";
+$username = "myllumipun";
+$password = "S141354W";
+
 // aurel local server
 //$database = "qrs";
 //$username = "root";
 //$password = "root";
 
 //jordis local server
-$database = "qrs";
-$username = "root";
-$password = "";
+//$database = "qrs";
+//$username = "root";
+//$password = "";
 
 // vimod server
 // $database = "codesqr";
