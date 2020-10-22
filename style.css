@@ -5,20 +5,27 @@ body{
     height: 100vh;
 }
 *{
-    font-size: 14pt;
+    font-size: 18pt;
     font-family: 'Courier New', Courier, monospace;
 }
 header{
     padding: 20px;
-    background-color: #080808;
-    color: white;
+    background-color: #be8f00;
+    background-image: url("./images/assets/gold.jpg");
+    background-size: cover;
+    color: black;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 .logo{
-    width:50px;
-    border-radius: 50%;
+    width:150px;
+}
+footer{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .user-info > *{
     display: block;
@@ -41,20 +48,49 @@ header{
     margin: 0 auto;
     height: 100%;
 }
+.message{
+    border: solid #be8f00;
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
 .main-btn{
     display: block;
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 50px;
     width: 100%;
     max-width: 320px;
     padding: 20px;
-    background-color: black;
+    background-color: #be8f00;
+    background-image: url("./images/assets/gold.jpg");
+    background-size: cover;
+    color: black;
+    text-transform: uppercase;
+    font-size: 20pt;
+    font-weight: bold;
+    border:none;
+}
+.btn{
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 100%;
+    max-width: 320px;
+    padding: 20px;
+    background-color: #be8f00;
     color: white;
+    text-transform: uppercase;
+    font-size: 20pt;
+    font-weight: bold;
     border:none;
 }
 h1{
     font-size: 20pt;
     margin: 5px 0;
+    text-transform: uppercase;
 }
 h2{
     font-size: 18pt;

@@ -16,7 +16,7 @@
 
 <body>
     <header>
-        <img class="logo" src="https://www.fillmurray.com/g/100/100">
+        <!-- <img class="logo" src="https://www.fillmurray.com/g/100/100"> -->
         <div class="user-info">
             <span id="user-name"></span>
             <span id="user-points"></span>
@@ -24,11 +24,16 @@
     </header>
     <section class="container">
         <div class="message">
-            <h1><?php echo $copy["welcome:title"]; ?></h1>
-            <p><?php echo $copy["welcome:p"]; ?></p>
+            <div>
+                <h1><?php echo $copy["welcome:title"]; ?></h1>
+                <p><?php echo $copy["welcome:p"]; ?></p>
+            </div>
         </div>
-        <button class="main-btn" onclick="btnClick()"><?php echo $copy["welcome:button"]; ?></button>
+        <button class="btn" onclick="btnClick()"><?php echo $copy["welcome:button"]; ?></button>
     </section>
+    <footer>
+        <img class="logo" src="./images/assets/logo.png">
+    </footer>
 </body>
 <script>
     function btnClick(){
