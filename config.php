@@ -2,14 +2,14 @@
 $servername   = "localhost";
 
 // final server
-// $database = "llumipunts";
-// $username = "myllumipun";
-// $password = "S141354W";
+$database = "llumipunts";
+$username = "myllumipun";
+$password = "S141354W";
 
 // aurel local server
-$database = "qrs";
-$username = "root";
-$password = "root";
+// $database = "qrs";
+// $username = "root";
+// $password = "root";
 
 //jordis local server
 //$database = "qrs";
