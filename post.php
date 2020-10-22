@@ -22,9 +22,9 @@ if(mysqli_num_rows($queryName) > 0 && mysqli_num_rows($query) < 1) {
 }
 else if(mysqli_num_rows($query) > 0) {
    while ($row = $query->fetch_assoc()) {
-        setcookie('userId',$row['id']);
-        setcookie('name',$row['name']);
-        setcookie('points', $row['points']);
+        setcookie('userId',$row['id'],time() + (86400 * 90), "/");
+        setcookie('name',$row['name'],time() + (86400 * 90), "/");
+        setcookie('points', $row['points'],time() + (86400 * 90), "/");
    }
    echo "return";
 }
@@ -37,9 +37,9 @@ else {
     while ($row = $result->fetch_assoc()) {
         $userId= $row['id'];
     }
-    setcookie('userId', $userId);
-    setcookie('name', $name);
-    setcookie('points', "0");
+    setcookie('userId', $userId,time() + (86400 * 90), "/");
+    setcookie('name', $name,time() + (86400 * 90), "/");
+    setcookie('points', "0",time() + (86400 * 90), "/");
     //Create an empty database of qr codes
     $query2 = mysqli_query($conn,"INSERT INTO `codes`(`id`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`) VALUES ('$userId',0,0,0,0,0,0,0,0,0,0)");
     echo "success";

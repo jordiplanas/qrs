@@ -22,7 +22,7 @@ if(!isset($_COOKIE['userId'])) {
     echo "no cookie";
     //rember the qr url
     if (isset($_GET['id'])) {
-        setcookie('prevUrl', $_GET['id']);
+        setcookie('prevUrl', $_GET['id'],time() + (86400 * 90), "/");
         // header("Location: http://vimod.net/qrs/form.php"); 
         echo "<script>window.location='form.php';</script>";
         exit();
@@ -69,7 +69,7 @@ if(!isset($_COOKIE['userId'])) {
             $userPoints += $points;
         }
         $updatePoints = mysqli_query($conn, "UPDATE `users` SET `points`='$userPoints' WHERE `id`='$userId'");
-        setcookie('points', $userPoints);
+        setcookie('points', $userPoints, time() + (86400 * 90), "/");
 
         $embedded = $qrData["embedded"];
         // check to display embedded content or not
