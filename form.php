@@ -17,7 +17,7 @@
     <div class="notification">
         <p id="message"></p>
     </div>
-    <img class="hero-img" src="https://www.fillmurray.com/g/500/500">
+    <img class="hero-img" src="./images/assets/cuadro.jpg">
     <section class="container">
         <form name="registration" id="my-form" action="" method="post">
             <input class="input" type="text" name="name" placeholder="<?php echo $copy["form:username"]; ?>" autocomplete="username" required />
@@ -25,6 +25,9 @@
             <input class="main-btn" type="submit" name="submit" value="<?php echo $copy["form:button"]; ?>" />
         </form>
     </section>
+    <footer>
+        <img class="logo" src="./images/assets/logo.png">
+    </footer>
     <script>
         $(document).ready(function() {
             $("#my-form").submit(function(e) {
@@ -89,24 +92,27 @@
     }
     
     .hero-img {
-        width: 100vw;
-        object-fit: cover;
-        object-position: center;
+        padding: 20px;
+        width: calc(100vw - 40px);
+        height: auto;
     }
     
     .input {
         width: calc(100% - 50px);
         padding: 20px 25px;
         border: none;
-        background-color: lightgrey;
+        color: white;
+        background-color: black;
         border-radius: 10px;
         margin: 10px 0;
         display: block;
+        font-size: 16pt;
     }
     
     .input::placeholder {
-        color: black;
+        color: white;
         font-size: 16pt;
+        text-transform: uppercase;
     }
     
     .radio-btn {

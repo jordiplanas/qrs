@@ -16,7 +16,7 @@
 
 <body>
     <header>
-        <img class="logo" src="https://www.fillmurray.com/g/100/100">
+        <!-- <img class="logo" src="https://www.fillmurray.com/g/100/100"> -->
         <div class="user-info">
             <span id="user-name"></span>
             <span id="user-points"></span>
@@ -24,9 +24,11 @@
     </header>
     <section class="container">
         <div class="message">
-            <h1><?php echo $copy["404:title"]; ?></h1>
-            <h2> <?php echo $copy["404:subtitle"]; ?></h2>
-            <p><?php echo $copy["404:p"]; ?></p>
+            <div>
+                <h1><?php echo $copy["404:title"]; ?></h1>
+                <h2> <?php echo $copy["404:subtitle"]; ?></h2>
+                <p><?php echo $copy["404:p"]; ?></p>
+            </div>
         </div>
     </section>
 </body>

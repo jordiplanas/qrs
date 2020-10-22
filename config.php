@@ -7,9 +7,9 @@ $username = "myllumipun";
 $password = "S141354W";
 
 // aurel local server
-//$database = "qrs";
-//$username = "root";
-//$password = "root";
+// $database = "qrs";
+// $username = "root";
+// $password = "root";
 
 //jordis local server
 //$database = "qrs";

@@ -78,7 +78,7 @@ if(!isset($_COOKIE['userId'])) {
 }
 ?>
     <header>
-        <img class="logo" src="https://www.fillmurray.com/g/100/100">
+        <!-- <img class="logo" src="https://www.fillmurray.com/g/100/100"> -->
         <div class="user-info">
             <span id="user-name"></span>
             <span id="user-points"></span>
@@ -90,12 +90,15 @@ if(!isset($_COOKIE['userId'])) {
             <img id="points" src="images/<?php echo $points; ?>.gif" alt="+<?php echo $points; ?> llumipunts">
         </div>
         <div class="embedded-container">
-            <div class="embedded-content" style="display: <?php echo $displayEmbedded; ?>">
+            <!-- <div class="embedded-content" style="display: <?php echo $displayEmbedded; ?>">
                     <iframe src="<?php echo $embedded; ?>" frameBorder="0"></iframe>
-            </div>
+            </div> -->
         </div>
-        <!-- <button class="main-btn"> RANKING </button> -->
+        <button class="btn"> RANQUING </button>
     </section>
+    <footer>
+        <img class="logo" src="./images/assets/logo.png">
+    </footer>
 
 </body>
 
