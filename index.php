@@ -94,7 +94,7 @@ if(!isset($_COOKIE['userId'])) {
                     <iframe src="<?php echo $embedded; ?>" frameBorder="0"></iframe>
             </div> -->
         </div>
-        <button class="btn"> RANQUING </button>
+        <button class="btn" onclick="location.href='/ranking.php'" type="button"> RANQUING </button>
     </section>
     <footer>
         <img class="logo" src="./images/assets/logo.png">
