@@ -30,18 +30,20 @@ if(!isset($_COOKIE['userId'])) {
 }else{
     //user has an Id, has been on the site 
     $userId = $_COOKIE['userId'];
+    $json = file_get_contents('data/data.json');
+    $data = json_decode($json, true); // decode the JSON into an associative array
     // get params from qr url 
     if (isset($_GET['id'])) {
         $qr = $_GET['id'];
         //check visited the Qr parameter id
-        $sql_id= "SELECT `$qr` FROM `codes` WHERE `id`='$userId'";
-        $result= mysqli_query($conn, $sql_id);
-        if(!$result){
+        if(!$data[$qr]){
             //if the QR doesn't exist --> send to 404 error page
             // echo "QR doesn't exist";
             echo "<script>window.location='404.php';</script>";
             exit();
         }
+        $sql_id= "SELECT `$qr` FROM `codes` WHERE `id`='$userId'";
+        $result= mysqli_query($conn, $sql_id);
         while ($row = $result->fetch_assoc()) {
             $qrResult= $row[$qr];
         }
@@ -59,8 +61,6 @@ if(!isset($_COOKIE['userId'])) {
         while ($row = $resultPoints->fetch_assoc()) {
             $userPoints= $row['points'];
         }
-        $json = file_get_contents('data/data.json');
-        $data = json_decode($json, true); // decode the JSON into an associative array
         $qrData = $data[$qr];
         $points = $qrData["points"];
 
@@ -90,11 +90,11 @@ if(!isset($_COOKIE['userId'])) {
             <img id="points" src="images/<?php echo $points; ?>.gif" alt="+<?php echo $points; ?> llumipunts">
         </div>
         <div class="embedded-container">
-            <!-- <div class="embedded-content" style="display: <?php echo $displayEmbedded; ?>">
-                    <iframe src="<?php echo $embedded; ?>" frameBorder="0"></iframe>
-            </div> -->
+            <div class="embedded-content" style="display: <?php echo $displayEmbedded; ?>">
+                    <img src="<?php echo $embedded; ?>">
+            </div>
         </div>
-        <button class="btn"> RANQUING </button>
+        <button class="btn" onclick="window.location.href='/ranking.php'"> <?php echo $copy["ranking:button"]; ?> </button>
     </section>
     <footer>
         <img class="logo" src="./images/assets/logo.png">
