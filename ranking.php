@@ -35,7 +35,7 @@ echo "</table>";
 mysqli_close($conn)
 
 ?>
-   <button class="btn" onclick="location.href='/invalid.php'" type="button">BACK</button>
+   <button class="btn" onclick="location.href='/welcome.php'" type="button">BACK</button>
 </body>
 
 
