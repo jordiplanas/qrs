@@ -91,7 +91,7 @@ if(!isset($_COOKIE['userId'])) {
         </div>
         <div class="embedded-container">
             <div class="embedded-content" style="display: <?php echo $displayEmbedded; ?>">
-                    <img src="<?php echo $embedded; ?>">
+                    <img src="<?php echo $embedded; ?>" alt="magic gif">
             </div>
         </div>
         <button class="btn" onclick="location.href='/ranking.php'" type="button"> RANQUING </button>
