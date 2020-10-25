@@ -2,7 +2,7 @@ body{
     margin: 0;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
 }
 *{
     font-size: 18pt;
@@ -14,9 +14,9 @@ header{
     background-image: url("./images/assets/gold.jpg");
     background-size: cover;
     color: black;
-    display: flex;
+    /* display: flex;
     justify-content: flex-end;
-    align-items: center;
+    align-items: center; */
 }
 .logo{
     width:150px;
@@ -48,13 +48,14 @@ footer{
     width: calc(100% - 40px);
     max-width: 400px;
     margin: 0 auto;
-    height: 100%;
+    flex: 1;
 }
 .message{
     border: solid #be8f00;
     padding: 20px;
     height: 100%;
     display: flex;
+    flex: 1;
     justify-content: center;
     text-align: center;
     align-items: center;
