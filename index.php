@@ -103,9 +103,6 @@ if(!isset($_COOKIE['userId'])) {
 </body>
 
 <style>
-    .container{
-        height: auto;
-    }
     .reward{
         display: flex;
         flex-direction: column;

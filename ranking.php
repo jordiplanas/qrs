@@ -56,11 +56,12 @@
 <style>
   table{
     border-spacing: 0;
+    display: block;
   }
   .scroll {
     max-height: calc(100vh - 300px);
     overflow: auto;
-    display: block;
+    background-color: #f6ce70;
   }
   tbody{
     display: inline-table;
