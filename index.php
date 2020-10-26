@@ -99,7 +99,7 @@ if(!isset($_COOKIE['userId'])) {
             <div class="embedded-content" style="display: <?php echo $displayEmbedded; ?>">
                     <img src="<?php echo $embedded; ?>" alt="magic gif">
             </div>
-            <model-viewer class="embedded-content" style="display: <?php echo $displayAr; ?>" src="./assets/models/<?php echo $ar; ?>.gltf" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A Crab" ios-src="./assets/models/<?php echo $ar; ?>.usdz"></model-viewer>
+            <model-viewer autoplay class="embedded-content" style="display: <?php echo $displayAr; ?>" src="./assets/models/<?php echo $ar; ?>/scene.gltf" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A Crab" ios-src="./assets/models/<?php echo $ar; ?>.usdz"></model-viewer>
         </div>
         <button class="btn" onclick="location.href='/ranking.php'" type="button"> RANQUING </button>
     </section>
