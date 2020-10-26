@@ -12,6 +12,7 @@
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
   <script type="text/javascript" src="header.js"></script>
+  <script type="text/javascript" src="footer.js"></script>
   <?php include('lang.php'); ?>
 </head>
 <body>
@@ -103,13 +104,31 @@ else if(!isset($_COOKIE['userId'])) {
             <div class="embedded-content" style="display: <?php echo $displayEmbedded; ?>">
                     <img src="<?php echo $embedded; ?>" alt="magic gif">
             </div>
-            <model-viewer autoplay class="embedded-content" style="display: <?php echo $displayAr; ?>" src="./assets/models/<?php echo $ar; ?>/scene.gltf" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A Crab" ios-src="./assets/models/<?php echo $ar; ?>.usdz"></model-viewer>
+            <model-viewer autoplay class="embedded-content" style="display: <?php echo $displayAr; ?>" src="./assets/models/<?php echo $ar; ?>/scene.gltf" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="Llumipunts" ios-src="./assets/models/<?php echo $ar; ?>.usdz"></model-viewer>
         </div>
-        <button class="btn" onclick="location.href='/ranking.php'" type="button"> RANQUING </button>
+        <!-- <button class="btn" onclick="location.href='/ranking.php'" type="button"> RANQUING </button> -->
     </section>
     <footer>
+        <div class="links">
+            <a onclick="showInfo()"> <?php echo $copy["footer:info"]; ?></a>
+            <a href="/ranking.php"> <?php echo $copy["footer:ranking"]; ?></a>
+            <a onclick="showLegal()"> <?php echo $copy["footer:legal"]; ?> </a>
+        </div>
         <img class="logo" src="./assets/ui/logo.png">
     </footer>
+    <section id="info-overlay" class="overlay">
+        <div class="overlay-content">
+            <a onclick="closeInfo()" class="close"></a>
+            <?php echo $copy["info:copy"]; ?>
+        </div>
+    </section>
+
+    <section id="legal-overlay" class="overlay">
+            <div class="overlay-content">
+                <a onclick="closeLegal()" class="close"></a>
+                <?php echo $copy["legal:copy"]; ?>
+            </div>
+    </section>
 
 </body>
 

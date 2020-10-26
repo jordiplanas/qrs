@@ -120,10 +120,22 @@
         font-size: 16pt;
         text-transform: uppercase;
     }
+
+    .legal-wrapper{
+        display: flex;
+        margin-top: 20px;
+    }
     
     .radio-btn {
-        margin: 20px 0;
+        margin: 4px;
         color: grey;
+    }
+
+    label{
+        display: block;
+        margin-left: 6px;
+        line-height: 16pt;
+        font-size: 12pt;
     }
 </style>
 
