@@ -22,8 +22,10 @@
         <form name="registration" id="my-form" action="" method="post">
             <input class="input" type="text" name="name" placeholder="<?php echo $copy["form:username"]; ?>" autocomplete="username" required />
             <input class="input" type="password" name="password" placeholder="<?php echo $copy["form:password"]; ?>" autocomplete="current-password" required />
-            <input type="radio" name="bases" id="bases" value="black" required />
-            <label for="rad1">Acepto las bases legales del concurso</label>
+            <div class="legal-wrapper">
+                <input class="check-btn" type="checkbox" name="bases" id="bases" value="black" required />
+                <label for="check-btn"><?php echo $copy["form:legal"]; ?></label>
+            </div>
             <input class="main-btn" type="submit" name="submit" value="<?php echo $copy["form:button"]; ?>" />
         </form>
     </section>
@@ -120,10 +122,22 @@
         font-size: 16pt;
         text-transform: uppercase;
     }
+
+    .legal-wrapper{
+        display: flex;
+        margin-top: 20px;
+    }
     
     .radio-btn {
-        margin: 20px 0;
+        margin: 4px;
         color: grey;
+    }
+
+    label{
+        display: block;
+        margin-left: 6px;
+        line-height: 16pt;
+        font-size: 12pt;
     }
 </style>
 

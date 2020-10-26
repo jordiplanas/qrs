@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="style.css"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="header.js"></script>
+    <script type="text/javascript" src="footer.js"></script>
     <?php include('lang.php'); ?>
 </head>
 
@@ -32,8 +33,26 @@
         <button class="btn" onclick="btnClick()"><?php echo $copy["welcome:button"]; ?></button>
     </section>
     <footer>
+        <div class="links">
+            <a onclick="showInfo()"> <?php echo $copy["footer:info"]; ?></a>
+            <a href="/ranking.php"> <?php echo $copy["footer:ranking"]; ?></a>
+            <a onclick="showLegal()"> <?php echo $copy["footer:legal"]; ?> </a>
+        </div>
         <img class="logo" src="./assets/ui/logo.png">
     </footer>
+    <section id="info-overlay" class="overlay">
+        <div class="overlay-content">
+            <a onclick="closeInfo()" class="close"></a>
+            <?php echo $copy["info:copy"]; ?>
+        </div>
+    </section>
+
+    <section id="legal-overlay" class="overlay">
+            <div class="overlay-content">
+                <a onclick="closeLegal()" class="close"></a>
+                <?php echo $copy["legal:copy"]; ?>
+            </div>
+    </section>
 </body>
 <script>
     function btnClick(){
