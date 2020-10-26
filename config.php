@@ -2,20 +2,14 @@
 $servername   = "localhost";
 
 // final server
-<<<<<<< HEAD
 $database = "llumipunts";
 $username = "myllumipun";
 $password = "S141354W";
-=======
-//  $database = "llumipunts";
-//  $username = "myllumipun";
-//  $password = "S141354W";
->>>>>>> 81b6c8d2ca3c04cce3fc83f2a34c1b6f01e6762f
 
 // aurel local server
-$database = "qrs";
-$username = "root";
-$password = "root";
+//$database = "qrs";
+//$username = "root";
+//$password = "root";
 
 //jordis local server
 //$database = "qrs";
