@@ -19,7 +19,6 @@
 require('config.php');
 if (!isset($_GET['id'])) {
     // someone has entered directly to www.llumipunts.cat
-    echo "no param";
     echo "<script>window.location='splash.html';</script>";
     exit();
 }
