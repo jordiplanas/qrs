@@ -2,6 +2,7 @@ id,es,ca
 form:username,nombre,nom
 form:password,contraseña,contrasenya
 form:button,Acceder,Accedeix
+form:legal,Acepto las bases legales del concurso,Accepto les bases del concurs
 welcome:title,Gracias por registrarte!,Gràcies per registrar-te!
 welcome:p,"Ara escanea los códigos QR y captura las criaturas mágicas. ¡Gana llumipunts para conseguir premios, tarjetas regalo y descuentos!","Ara escaneja els codis QR i captura a les criatures màgiques. Guanya llumipunts per aconseguir premis, targetes regal i descomptes!"
 welcome:button,Vamos,Som-hi

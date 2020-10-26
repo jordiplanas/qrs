@@ -23,7 +23,7 @@
             <input class="input" type="text" name="name" placeholder="<?php echo $copy["form:username"]; ?>" autocomplete="username" required />
             <input class="input" type="password" name="password" placeholder="<?php echo $copy["form:password"]; ?>" autocomplete="current-password" required />
             <input type="radio" name="bases" id="bases" value="black" required />
-            <label for="rad1">Acepto las bases legales del concurso</label>
+            <label for="rad1"><?php echo $copy["form:legal"]; ?></label>
             <input class="main-btn" type="submit" name="submit" value="<?php echo $copy["form:button"]; ?>" />
         </form>
     </section>
