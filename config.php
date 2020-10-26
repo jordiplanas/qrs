@@ -2,9 +2,9 @@
 $servername   = "localhost";
 
 // final server
- //$database = "llumipunts";
- //$username = "myllumipun";
- //$password = "S141354W";
+$database = "llumipunts";
+$username = "myllumipun";
+$password = "S141354W";
 
 // aurel local server
 //$database = "qrs";
@@ -12,9 +12,9 @@ $servername   = "localhost";
 //$password = "root";
 
 //jordis local server
-$database = "qrs";
-$username = "root";
-$password = "";
+//$database = "qrs";
+//$username = "root";
+//$password = "";
 
 // vimod server
 // $database = "codesqr";
