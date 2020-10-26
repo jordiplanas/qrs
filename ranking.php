@@ -48,7 +48,7 @@
     ?>
   </section>
   <footer>
-    <img class="logo" src="./images/assets/logo.png">
+    <img class="logo" src="./assets/ui/logo.png">
   </footer>
    <!-- <button class="btn" onclick="location.href='/welcome.php'" type="button">BACK</button> -->
 </body>

@@ -17,7 +17,7 @@
     <div class="notification">
         <p id="message"></p>
     </div>
-    <img class="hero-img" src="./images/assets/cuadro.jpg">
+    <img class="hero-img" src="./assets/ui/cuadro.jpg">
     <section class="container">
         <form name="registration" id="my-form" action="" method="post">
             <input class="input" type="text" name="name" placeholder="<?php echo $copy["form:username"]; ?>" autocomplete="username" required />
@@ -26,7 +26,7 @@
         </form>
     </section>
     <footer>
-        <img class="logo" src="./images/assets/logo.png">
+        <img class="logo" src="./assets/ui/logo.png">
     </footer>
     <script>
         $(document).ready(function() {
@@ -85,6 +85,10 @@
         color: white;
         width: calc(100% - 40px);
         padding: 20px;
+    }
+
+    .container {
+        justify-content: flex-start;
     }
     
     #message {

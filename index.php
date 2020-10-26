@@ -9,6 +9,8 @@
   <link rel="stylesheet" type="text/css" href="style.css"></link>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
   <script type="text/javascript" src="header.js"></script>
   <?php include('lang.php'); ?>
 </head>
@@ -71,9 +73,13 @@ if(!isset($_COOKIE['userId'])) {
         $updatePoints = mysqli_query($conn, "UPDATE `users` SET `points`='$userPoints' WHERE `id`='$userId'");
         setcookie('points', $userPoints, time() + (86400 * 90), "/");
 
-        $embedded = $qrData["embedded"];
+        $embedded = $qrData["embedded"] ;
         // check to display embedded content or not
-        $displayEmbedded = $embedded ?  'block' : 'none';     
+        $displayEmbedded = $embedded ?  'block' : 'none'; 
+        
+        $ar = $qrData["ar"] ;
+        // check to display embedded content or not
+        $displayAr = $ar ?  'block' : 'none';     
     }  
 }
 ?>
@@ -87,17 +93,18 @@ if(!isset($_COOKIE['userId'])) {
 
     <section class="container">
         <div class="reward">
-            <img id="points" src="images/<?php echo $points; ?>.gif" alt="+<?php echo $points; ?> llumipunts">
+            <img id="points" src="assets/images/<?php echo $points; ?>.gif" alt="+<?php echo $points; ?> llumipunts">
         </div>
         <div class="embedded-container">
             <div class="embedded-content" style="display: <?php echo $displayEmbedded; ?>">
                     <img src="<?php echo $embedded; ?>" alt="magic gif">
             </div>
+            <model-viewer class="embedded-content" style="display: <?php echo $displayAr; ?>" src="./assets/models/<?php echo $ar; ?>.gltf" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" camera-controls alt="A Crab" ios-src="./assets/models/<?php echo $ar; ?>.usdz"></model-viewer>
         </div>
         <button class="btn" onclick="location.href='/ranking.php'" type="button"> RANQUING </button>
     </section>
     <footer>
-        <img class="logo" src="./images/assets/logo.png">
+        <img class="logo" src="./assets/ui/logo.png">
     </footer>
 
 </body>
@@ -119,6 +126,9 @@ if(!isset($_COOKIE['userId'])) {
     }
     .embedded-content{
         width:100%;
+    }
+    model-viewer{
+        height: 50vh;
     }
     .embedded-content > *{
         width:inherit;
