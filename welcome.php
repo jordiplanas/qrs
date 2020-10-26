@@ -32,7 +32,7 @@
         <button class="btn" onclick="btnClick()"><?php echo $copy["welcome:button"]; ?></button>
     </section>
     <footer>
-        <img class="logo" src="./images/assets/logo.png">
+        <img class="logo" src="./assets/ui/logo.png">
     </footer>
 </body>
 <script>

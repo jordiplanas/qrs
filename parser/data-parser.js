@@ -19,6 +19,7 @@ csv({
     const obj = {};
     obj['points'] = csvRow[1];
     obj['embedded'] = csvRow[2];
+    obj['ar'] = csvRow[3];
     outputData[csvRow[0]] = obj;
     // console.log(outputData);
   }).on('done',()=>{
