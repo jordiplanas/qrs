@@ -43,7 +43,8 @@
     <section id="info-overlay" class="overlay">
         <div class="overlay-content">
             <a onclick="closeInfo()" class="close"></a>
-            <?php echo $copy["info:copy"]; ?>
+            <?php //echo $copy["info:copy"]; ?>
+            <img style="max-width: 100%; height: auto;" src="assets/images/info.png" alt="info">
         </div>
     </section>
 
