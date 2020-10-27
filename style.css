@@ -136,12 +136,15 @@ h2{
 .overlay-content{
     background-color: white;
     margin: 20px;
-    padding: 30px;
     flex: 1;
     overflow: auto;
 }
 
-.close {
+#legal-overlay > .overlay-content{
+    padding: 30px;
+}
+
+/* .close {
     position: absolute;
     right: 30px;
     top: 30px;
@@ -164,5 +167,5 @@ h2{
 }
 .close:after {
     transform: rotate(-45deg);
-}
+} */
   

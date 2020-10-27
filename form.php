@@ -33,9 +33,9 @@
     <footer>
         <img class="logo" src="./assets/ui/logo.png">
     </footer>
-    <section id="legal-overlay" class="overlay">
+    <section id="legal-overlay" class="overlay" onclick="closeLegal()">
+            <!-- <a onclick="closeLegal()" class="close"></a> -->
             <div class="overlay-content">
-                <a onclick="closeLegal()" class="close"></a>
                 <?php echo $copy["legal:copy"]; ?>
             </div>
     </section>

@@ -56,17 +56,16 @@
     <img class="logo" src="./assets/ui/logo.png">
   </footer>
 
-  <section id="info-overlay" class="overlay">
+  <section id="info-overlay" class="overlay" onclick="closeInfo()">
         <div class="overlay-content">
-            <a onclick="closeInfo()" class="close"></a>
-            <?php //echo $copy["info:copy"]; ?>
+            <!-- <a onclick="closeInfo()" class="close"></a> -->
             <img style="max-width: 100%; height: auto;" src="assets/images/info.png" alt="info">
         </div>
   </section>
 
-  <section id="legal-overlay" class="overlay">
+  <section id="legal-overlay" class="overlay" onclick="closeLegal()">
         <div class="overlay-content">
-            <a onclick="closeLegal()" class="close"></a>
+            <!-- <a onclick="closeLegal()" class="close"></a> -->
             <?php echo $copy["legal:copy"]; ?>
         </div>
   </section>
