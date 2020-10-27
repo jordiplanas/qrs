@@ -18,9 +18,13 @@
 <body>
 <?php
 require('config.php');
-
+if (!isset($_GET['id'])) {
+    // someone has entered directly to www.llumipunts.cat
+    echo "<script>window.location='splash.html';</script>";
+    exit();
+}
 //cookies are enabled
-if(!isset($_COOKIE['userId'])) { 
+else if(!isset($_COOKIE['userId'])) { 
     //user has no ID go to Register Form
     echo "no cookie";
     //rember the qr url
