@@ -10,6 +10,7 @@
     <meta name="author" content="JORDI">
     <link rel="stylesheet" type="text/css" href="style.css"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="footer.js"></script>
     <?php include('lang.php'); ?>
 </head>
 
@@ -22,14 +23,22 @@
         <form name="registration" id="my-form" action="" method="post">
             <input class="input" type="text" name="name" placeholder="<?php echo $copy["form:username"]; ?>" autocomplete="username" required />
             <input class="input" type="password" name="password" placeholder="<?php echo $copy["form:password"]; ?>" autocomplete="current-password" required />
-            <input type="radio" name="bases" id="bases" value="black" required />
-            <label for="rad1"><?php echo $copy["form:legal"]; ?></label>
+            <div class="legal-wrapper">
+                <input class="check-btn" type="checkbox" name="bases" id="bases" value="black" required />
+                <label for="check-btn"><a onclick="showLegal()"><?php echo $copy["form:legal"]; ?></a></label>
+            </div>
             <input class="main-btn" type="submit" name="submit" value="<?php echo $copy["form:button"]; ?>" />
         </form>
     </section>
     <footer>
         <img class="logo" src="./assets/ui/logo.png">
     </footer>
+    <section id="legal-overlay" class="overlay">
+            <div class="overlay-content">
+                <a onclick="closeLegal()" class="close"></a>
+                <?php echo $copy["legal:copy"]; ?>
+            </div>
+    </section>
     <script>
         $(document).ready(function() {
             $("#my-form").submit(function(e) {
@@ -126,8 +135,8 @@
         margin-top: 20px;
     }
     
-    .radio-btn {
-        margin: 4px;
+    .check-btn {
+        margin: 5px;
         color: grey;
     }
 
@@ -136,6 +145,7 @@
         margin-left: 6px;
         line-height: 16pt;
         font-size: 12pt;
+        text-decoration: underline;
     }
 </style>
 
