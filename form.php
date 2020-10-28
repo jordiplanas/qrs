@@ -39,6 +39,12 @@
             <img style="max-width: 100%; height: auto;" src="assets/ui/legal.jpg" alt="info">
             </div>
     </section>
+    <section id="info-overlay" class="overlay" onclick="closeInfo()" style="display:flex">
+        <div class="overlay-content">
+            <!-- <a onclick="closeInfo()" class="close"></a> -->
+            <img style="max-width: 100%; height: auto;" src="assets/ui/info.jpg" alt="info">
+        </div>
+    </section>
     <script>
         $(document).ready(function() {
             $("#my-form").submit(function(e) {
