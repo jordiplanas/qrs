@@ -36,7 +36,7 @@
     <section id="legal-overlay" class="overlay" onclick="closeLegal()">
             <!-- <a onclick="closeLegal()" class="close"></a> -->
             <div class="overlay-content">
-            <img style="max-width: 100%; height: auto;" src="assets/images/b.png" alt="info">
+            <img style="max-width: 100%; height: auto;" src="assets/ui/legal.jpg" alt="info">
             </div>
     </section>
     <script>

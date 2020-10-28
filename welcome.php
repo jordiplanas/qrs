@@ -43,14 +43,14 @@
     <section id="info-overlay" class="overlay" onclick="closeInfo()">
         <div class="overlay-content">
             <!-- <a onclick="closeInfo()" class="close"></a> -->
-            <img style="max-width: 100%; height: auto;" src="assets/images/info.png" alt="info">
+            <img style="max-width: 100%; height: auto;" src="assets/ui/info.jpg" alt="info">
         </div>
     </section>
 
     <section id="legal-overlay" class="overlay" onclick="closeLegal()">
             <div class="overlay-content">
                 <!-- <a onclick="closeLegal()" class="close"></a> -->
-                <img style="max-width: 100%; height: auto;" src="assets/images/b.png" alt="info">
+                <img style="max-width: 100%; height: auto;" src="assets/ui/legal.jpg" alt="info">
             </div>
     </section>
 </body>
