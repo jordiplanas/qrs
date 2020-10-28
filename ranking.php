@@ -65,13 +65,19 @@
 
   <section id="legal-overlay" class="overlay" onclick="closeLegal()">
         <div class="overlay-content">
+        <img style="max-width: 100%; height: auto;" src="assets/images/b.png" alt="info">
             <!-- <a onclick="closeLegal()" class="close"></a> -->
-            <?php echo $copy["legal:copy"]; ?>
+           
         </div>
   </section>
 </body>
 
 <style>
+  #pdf{
+    width:100%;
+    height:100%;
+  }
+  
   table{
     border-spacing: 0;
     display: block;

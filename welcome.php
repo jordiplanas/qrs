@@ -50,7 +50,7 @@
     <section id="legal-overlay" class="overlay" onclick="closeLegal()">
             <div class="overlay-content">
                 <!-- <a onclick="closeLegal()" class="close"></a> -->
-                <?php echo $copy["legal:copy"]; ?>
+                <img style="max-width: 100%; height: auto;" src="assets/images/b.png" alt="info">
             </div>
     </section>
 </body>

@@ -5,39 +5,44 @@
     src: local('Chalet Medium'), url('./assets/fonts/CHALETLONDONNINETEENEIGHTY.TTF') format('ttf');
 }
 
-body{
+body {
     margin: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
-*{
+
+* {
     font-size: 14pt;
     line-height: 20pt;
     font-family: 'Chalet', sans-serif;
 }
-header{
+
+header {
     padding: 20px;
     background-color: #be8f00;
     background-image: url("./assets/ui/gold.jpg");
     background-size: cover;
     color: black;
 }
-.logo{
-    width:150px;
+
+.logo {
+    width: 150px;
 }
-footer{
+
+footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-bottom: 30px;
 }
-.links{
+
+.links {
     padding: 20px;
 }
 
-.links > a {
+.links>a {
     margin: 10px;
     color: black;
     opacity: 0.7;
@@ -46,21 +51,25 @@ footer{
     text-decoration: underline;
     cursor: pointer;
 }
-.user-info > *{
+
+.user-info>* {
     display: block;
     text-align: right;
     line-height: 14pt;
 }
-#user-name{
+
+#user-name {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 14pt;
 }
-#user-points{
+
+#user-points {
     padding: 5px 0;
     font-weight: bold;
 }
-.container{
+
+.container {
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -70,7 +79,8 @@ footer{
     margin: 0 auto;
     flex: 1;
 }
-.message{
+
+.message {
     border: solid #be8f00;
     padding: 20px;
     height: 100%;
@@ -80,7 +90,8 @@ footer{
     text-align: center;
     align-items: center;
 }
-.main-btn{
+
+.main-btn {
     display: block;
     margin: 0 auto;
     margin-top: 50px;
@@ -94,9 +105,10 @@ footer{
     text-transform: uppercase;
     font-size: 20pt;
     font-weight: bold;
-    border:none;
+    border: none;
 }
-.btn{
+
+.btn {
     display: block;
     margin: 0 auto;
     margin-top: 50px;
@@ -108,14 +120,16 @@ footer{
     text-transform: uppercase;
     font-size: 20pt;
     font-weight: bold;
-    border:none;
+    border: none;
 }
-h1{
+
+h1 {
     font-size: 20pt;
     margin: 5px 0;
     text-transform: uppercase;
 }
-h2{
+
+h2 {
     font-size: 18pt;
     margin: 3px 0;
 }
@@ -129,20 +143,21 @@ h2{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 2;
 }
 
-.overlay-content{
+.overlay-content {
     background-color: white;
     margin: 20px;
     flex: 1;
     overflow: auto;
 }
 
-#legal-overlay > .overlay-content{
-    padding: 30px;
+#legal-overlay>.overlay-content {
+    /* padding: 30px;*/
 }
+
 
 /* .close {
     position: absolute;
@@ -168,4 +183,3 @@ h2{
 .close:after {
     transform: rotate(-45deg);
 } */
-  
