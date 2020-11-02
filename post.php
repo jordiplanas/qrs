@@ -1,5 +1,6 @@
 <?php
 require('config.php');
+include('lang.php');
 //Create variables
 $name = $_POST['name'];
 $email = $_POST['password'];
@@ -7,18 +8,9 @@ $query = mysqli_query($conn,"SELECT * FROM `users` WHERE `mail`='$email' AND `na
 $queryName = mysqli_query($conn,"SELECT * FROM `users` WHERE  `name`='$name'");
 $sql = "INSERT INTO `users`(`name`, `mail`) VALUES ('$name', '$email')";
 
-//Make sure name is valid
-// if(!preg_match("/^[a-zA-Z'-]+$/",$name)) { 
-//     die (" invalid first name");
-// }
-/*make sure user checked
-if(!isset($_POST['privacy'])){
-    die ("Please check privacy"); 
-}*/
-//Response
-//Checking to see if user allready exist
+//Checking to see if user already exist
 if(mysqli_num_rows($queryName) > 0 && mysqli_num_rows($query) < 1) {
-    die ("Name already taken"); 
+    die ($copy["form:msg:taken"]); 
 }
 else if(mysqli_num_rows($query) > 0) {
    while ($row = $query->fetch_assoc()) {
@@ -29,7 +21,7 @@ else if(mysqli_num_rows($query) > 0) {
    echo "return";
 }
 else if(!mysqli_query($conn, $sql)) {
-    echo 'Could not insert';
+    echo 'Error';
 }
 else {
     $sql_id= "SELECT `id` FROM `users` WHERE `mail`='$email'";

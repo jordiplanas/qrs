@@ -47,43 +47,60 @@
     </section>
     <script>
         $(document).ready(function() {
-            $("#my-form").submit(function(e) {
-                console.log("submt");
-                e.preventDefault();
-                $.ajax({
-                    url: "post.php",
-                    method: "post",
-                    data: $("form").serialize(),
-                    dataType: "text",
-                    success: function(res) {
-                        res = res.trim();
-                        console.log(res);
-                        if(res == 'success') {
-                            // NEW USER SUCCESS
-                            window.location.href = 'welcome.php';
-                        } else if(res == 'return') {
-                            // RETURNING USER 
+            function checkCookie(){
+                var cookieEnabled = navigator.cookieEnabled;
+                if (!cookieEnabled){ 
+                    document.cookie = "prevUrl";
+                    cookieEnabled = document.cookie.indexOf("prevUrl")!=-1;
+                } else if(document.cookie.indexOf("prevUrl") == -1){
+                    document.cookie = "prevUrl = 110; expires=Thu, 18 Dec 2025 12:00:00 UTC; path=/";
+                }
+                return cookieEnabled;
+            }
+
+            if (!checkCookie()) {
+                $(".notification").css('display', 'block');
+                $("#message").text("<?php echo $copy["form:msg:cookies"]; ?>");
+                $(".main-btn").attr("disabled", true);
+            } else {
+                $("#my-form").submit(function(e) {
+                    console.log("submt");
+                    e.preventDefault();
+                    $.ajax({
+                        url: "post.php",
+                        method: "post",
+                        data: $("form").serialize(),
+                        dataType: "text",
+                        success: function(res) {
+                            res = res.trim();
+                            console.log(res);
+                            if(res == 'success') {
+                                // NEW USER SUCCESS
+                                window.location.href = 'welcome.php';
+                            } else if(res == 'return') {
+                                // RETURNING USER 
+                                $(".notification").css('display', 'block');
+                                $("#message").text('<?php echo $copy["form:msg:return"]; ?>');
+                                $("#my-form")[0].reset();
+                                setTimeout(function() {
+                                    var id = getCookieValue("prevUrl");
+                                    window.location.href = 'index.php?id=' + id;
+                                }, 2000);
+                            } else {
+                                // ERROR
+                                $(".notification").css('display', 'block');
+                                $("#message").text(res);
+                                $("#my-form")[0].reset();
+                            }
+                        },
+                        error: function () {
                             $(".notification").css('display', 'block');
-                            $("#message").text('welcome back!');
-                            $("#my-form")[0].reset();
-                            setTimeout(function() {
-                                var id = getCookieValue("prevUrl");
-                                window.location.href = 'index.php?id=' + id;
-                            }, 2000);
-                        } else {
-                            // ERROR
-                            $(".notification").css('display', 'block');
-                            $("#message").text(res);
+                            $("#message").text('<?php echo $copy["form:msg:error"]; ?>');
                             $("#my-form")[0].reset();
                         }
-                    },
-                    error: function () {
-                        $(".notification").css('display', 'block');
-                        $("#message").text("There's been an error");
-                        $("#my-form")[0].reset();
-                    }
+                    });
                 });
-            });
+            }
 
             function getCookieValue(a) {
                 var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
@@ -95,13 +112,17 @@
 
 <style>
     .notification {
-        position: absolute;
+        position: fixed;
         display: none;
         top: 0;
         background-color: black;
         color: white;
         width: calc(100% - 40px);
         padding: 20px;
+    }
+    
+    .notification::first-letter{
+        text-transform: uppercase;
     }
 
     .container {

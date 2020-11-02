@@ -108,6 +108,13 @@ footer {
     border: none;
 }
 
+.main-btn:disabled{
+    background-color: grey;
+    background-image: none;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
 .btn {
     display: block;
     margin: 0 auto;

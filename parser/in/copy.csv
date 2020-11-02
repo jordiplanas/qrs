@@ -3,18 +3,20 @@ form:username,nombre,nom
 form:password,contraseña,contrasenya
 form:button,Acceder,Accedeix
 form:legal,Acepto las bases legales del concurso,Accepto les bases del concurs
+form:msg:cookies,Tus cookies están deshabilitados. Vaya a la configuración para activar los cookies y actualice esta página.,Les vostres cookies estan desactivades. Aneu a la configuració per activar les vostres cookies i actualitzeu aquesta pàgina.
+form:msg:return,dar una buena acogida!,Benvingut de nou!
+form:msg:taken,nombre ya en uso.,nom ja utilizat.
+form:msg:error,hemos encontrado un error.,hem trobat un error.
 welcome:title,Gracias por registrarte!,Gràcies per registrar-te!
 welcome:p,"Ara escanea los códigos QR y captura las criaturas mágicas. ¡Gana llumipunts para conseguir premios, tarjetas regalo y descuentos!","Ara escaneja els codis QR i captura a les criatures màgiques. Guanya llumipunts per aconseguir premis, targetes regal i descomptes!"
 welcome:button,Vamos,Som-hi
 404:title,404,404
 404:subtitle,"Lo sentimos, esta página no existe.","Ho sentim, aquesta pàgina no existeix."
-404:p,Abre la cámera para escanear otro QR.,Obre la càmera per escanejar un altre QR
+404:p,Abre la cámera para escanear otro QR.,Obre la càmera per escanejar un altre QR.
 invalid:title,Uups! Vaya lío!,Ups! L’has feta bona! 
 invalid:subtitle,Parece que ya habías escaneado este QR.,Sembla que ja havies escanejat aquest codi QR.
 invalid:p,Abre la cámera para escanear otro QR.,Obre la càmera per escanejar un altre QR.
 footer:ranking,Ranking,Rànking
 footer:info,Información,Informació
 footer:legal,Bases Legales,Bases Legals
-info:copy,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-legal:copy,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 splash:button,Participar,Participar
